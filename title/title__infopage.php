@@ -1,0 +1,1 @@
+<title>Infomation Page</title>

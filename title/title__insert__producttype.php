@@ -1,0 +1,1 @@
+<title>Insert6 Product Type</title>
