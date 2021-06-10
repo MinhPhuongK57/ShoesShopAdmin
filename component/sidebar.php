@@ -107,7 +107,7 @@
             <div class="sidebar-card d-none d-lg-flex">
                 <img class="sidebar-card-illustration mb-2" src="img/undraw_rocket.svg" alt="...">
                 <p class="text-center mb-2"><strong>Website Shoes Shop</strong> </br>Visit your Website</p>
-                <a class="btn btn-success btn-sm" href="http://localhost/Website%20Shoes%20Shop%20DoAn/index.php">Shoes Shop Administrator</a>
+                <a class="btn btn-success btn-sm" href="http://localhost/Website%20Shoes%20Shop/index.php">Shoes Shop Administrator</a>
             </div>
 
         </ul>
