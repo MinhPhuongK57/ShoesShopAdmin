@@ -57,7 +57,7 @@
             <div class="col-md-4 p-4">
                 <label for="validationCustom03" class="form-select">Product Type</label>
                 <select class="form-control" id="validationCustom03" name="idproducttype" value="" required>
-                        <option value="">Choose Product Type</option>
+                        <option value="0">Choose Product Type</option>
                     <?php foreach ($list__product_type_rowsdata as $arr_producttype) 
                     {  
                     ?>

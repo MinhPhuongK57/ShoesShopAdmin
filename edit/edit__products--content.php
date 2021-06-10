@@ -1,7 +1,7 @@
 <?php
     $level = "";
     include $level."index__data.php";
-
+    
     if(isset($_GET["id_product"]))
     {
         $id_product = $_GET["id_product"];
@@ -9,38 +9,36 @@
         $list__product_select = $connect->prepare($sql__select);
         $list__product_select -> execute();
         $list__product_select_rowsdata = $list__product_select ->fetchAll();
-
-
     }
-
-    // if(isset($_POST["id_product"]))
-    // {
-    //     $id_product = $_POST['idproduct'];
-    //     $productname= $_POST['productname'];
-    //     $id_producttype = $_POST['idproducttype'];
-    //     $id_provider = $_POST['idprovider'];
-    //     $total = $_POST['total'];
-    //     $price = $_POST['price'];
-    //     $color = $_POST['color'];
-    //     $size = $_POST['size'];
-    //     $description = $_POST['description'];
-    //     $status = $_POST['status'];
-    //     //Image
-    //     $image = $_FILES['image']['name'];
-    //     $image_tmp = $_FILES['image']['tmp_name'];
-        
-    //     /*-------------------Update product------------------*/
-    //     $sql__select = "SELECT * from product where id_product = '$id'";
     
-    //     $list__product_update = $connect->prepare($sql__select);
-    //     $list__product_update -> execute();
-    //     $list__product_select_rowsdata = $list__product_update ->fetchAll();
+    if(isset($_POST["idproduct"]))
+    {
+        $id_product = $_POST["idproduct"];
+        $productname= $_POST['productname'];
+        $id_producttype = $_POST['idproducttype'];
+        $id_provider = $_POST['idprovider'];
+        $total = $_POST['total'];
+        $price = $_POST['price'];
+        $color = $_POST['color'];
+        $size = $_POST['size'];
+        $description = $_POST['description'];
+        $status = $_POST['status'];
+        //Image
+        $image = $_FILES['image']['name'];
+        $image_tmp = $_FILES['image']['tmp_name'];
         
-    //     $sql__update = "UPDATE product SET id_product = $id_product,productname = $productname,id_producttype = $id_producttype,id_provider= $id_provider
-    //     productimage = $image,total = $total , price = $price , color = $color , size = $size , description = $description,status = $status";
-    //     move_uploaded_file($image_tmp,'img/'.$image);
-    // }
+        /*-------------------Update product------------------*/
+        
+        $sql__update = "UPDATE product SET productname = '$productname',id_producttype = '$id_producttype',id_provider= '$id_provider',
+        productimage = $image,total = $total , price = $price , color = '$color' , size = $size , description = '$description',status = $status
+        WHERE id_product = $id_product";
+        move_uploaded_file($image_tmp,'img/'.$image);
+        $list__update__product = $connect->prepare($sql__update);
+        $list__update__product ->execute();
+        $list__update_product_rowsdata = $list__update__product ->fetchAll();
+    }
 ?>
+
 <!-- Begin Page Content -->
 <div class="container-fluid">
 
@@ -57,16 +55,17 @@
             <a href="product.php" class="btn btn-primary" type="button">Back to product</a>
         </div>
         <?php foreach ($list__product_select_rowsdata as $list__select){ ?>
-            <form action="insert__product.php" method="post" class="row g-3 needs-validation" enctype="multipart/form-data" validate>
+            <form action="" method="post" class="row g-3 needs-validation" enctype="multipart/form-data" validate>
             <div class="col-md-4 p-4">
                 <label for="validationCustom01" class="form-label">Product ID</label>
-                <input type="text" class="form-control" id="validationCustom01" name="id_product" value="<?php echo $list__select['id_product'];?>" placeholder="Enter Product ID" required>
+                <input type="text" class="form-control" id="validationCustom01" name="idproduct" value="<?php echo $list__select['id_product'];?>" placeholder="Enter Product ID" required>
                 <div class="valid-feedback">
                     Looks good!
                 </div>
             </div>
             <div class="col-md-4 p-4">
                 <label for="validationCustom02" class="form-label">Product Name</label>
+                <input type="hidden" class="form-control" id="id" name="id" value="<?php echo $id_product?>">
                 <input type="text" class="form-control" id="validationCustom02" name="productname" value="<?php echo $list__select['productname']?>" placeholder="Enter Product Name"  required>
                 <div class="valid-feedback">
                     Looks good!
@@ -75,20 +74,20 @@
             <div class="col-md-4 p-4">
                 <label for="validationCustom03" class="form-select">Product Type</label>
                 <select class="form-control" id="validationCustom03" name="idproducttype" value="" required>
-                    <option value=""><?php echo $list__select['id_producttype']?></option>
+                    <option value="">--------------Choose Product Type--------------</option>
                     <?php foreach ($list__product_type_rowsdata as $arr_producttype) 
                     {  
                     ?>
                         <option value="<?php echo $arr_producttype["id_producttype"]?>"><?php echo $arr_producttype["producttypename"]?></option>
                     <?php
-                    } 
+                    }
                     ?>
                 </select>
             </div>
             <div class="col-md-4 p-4">
                 <label for="validationCustom04" class="form-label">Provider</label>
                 <select class="form-control" id="validationCustom04" name="idprovider" value="" required>
-                        <option value=""><?php echo $list__select['id_provider']?></option>
+                        <option value="">--------------Choose Provider--------------</option>
                     <?php foreach ($list__provider_rowsdata as $arr_provider) 
                     {  
                     ?>
@@ -116,7 +115,7 @@
             <div class="col-md-4 p-4">
                 <label for="validationCustom07" class="form-label">Color</label>
                 <select class="form-control" id="validationCustom04" name="color" value="" required>
-                        <option value=""><?php echo $list__select['color']?></option>
+                        <option value="">Choose Color</option>
                     <?php foreach ($list__product_color_rowsdata as $arr_product) 
                     {  
                     ?>
@@ -164,7 +163,7 @@
                 </div>
             </div>
             <div class="col-12 p-2">
-                <button class="btn btn-primary" type="submit" id="fun" onclick=click();>Update</button>
+                <button class="btn btn-primary" type="submit" name="submitupdate" id="fun" onclick=click();>Update</button>
             </div>
         </form>  
         <?php } ?>

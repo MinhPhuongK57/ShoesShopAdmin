@@ -1,5 +1,13 @@
 <?php
-    include $level."index__data.php"
+    include $level."index__data.php";
+
+    /*-------------------Delte staff------------------*/
+    if(isset($_GET["id_provider"])){
+        $id_provider= $_GET["id_provider"];
+        $sql__delete = "DELETE FROM provider WHERE id_provider = '$id_provider'";
+        $provider__delete = $connect->prepare($sql__delete);
+        $provider__delete -> execute();
+    }
 ?>
 <!-- Begin Page Content -->
 <div class="container-fluid">
@@ -41,7 +49,7 @@
                             <td><?php echo ($level.$arr__provider["status"])?"Active":"Inactive"?></td>
                             <td><a href="<?php echo $level."insert__provider"?>" class="btn btn-primary">Add</a></td>
                             <td><a href="#" class="btn btn-success">Edit</a></td>
-                            <td><a href="#" class="btn btn-danger">Delete</a></td>   
+                            <td><a href="provider.php?id_provider=<?php echo $level.$arr__provider["id_provider"]?>" class="btn btn-danger">Delete</a></td>   
                         </tr>
                     <?php } ?>
                 </tbody>

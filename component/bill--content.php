@@ -1,5 +1,13 @@
 <?php
-    include $level."index__data.php"
+    include $level."index__data.php";
+
+    /*-------------------Delte staff------------------*/
+    if(isset($_GET["id_bill"])){
+        $id_bill= $_GET["id_bill"];
+        $sql__delete = "DELETE FROM bill WHERE id_bill = '$id_bill'";
+        $bill__delete = $connect->prepare($sql__delete);
+        $bill__delete -> execute();
+    }
 ?>
 <!-- Begin Page Content -->
 <div class="container-fluid">
@@ -41,7 +49,7 @@
                             <td><?php echo ($level.$arr__bill["status"])?"Active":"Inactive"?></td>
                             <td><a href="<?php echo $level."insert__bill"?>" class="btn btn-primary">Add</a></td>
                             <td><a href="#" class="btn btn-success">Edit</a></td>
-                            <td><a href="#" class="btn btn-danger">Delete</a></td>   
+                            <td><a href="bill.php?id_bill=<?php echo $level.$arr__bill["id_bill"]?>" class="btn btn-danger">Delete</a></td>   
                         </tr>
                     <?php } ?>
                 </tbody>

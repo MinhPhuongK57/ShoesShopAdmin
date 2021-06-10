@@ -12,6 +12,7 @@
         $product__insert__producttype = $connect->prepare($sql__insert__producttype);
         $product__insert__producttype -> execute();
     }
+
 ?>
 <!-- Begin Page Content -->
 <div class="container-fluid">

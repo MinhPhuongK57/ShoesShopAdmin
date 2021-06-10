@@ -1,5 +1,13 @@
 <?php
-    include $level."index__data.php"
+    include $level."index__data.php";
+
+    /*-------------------Delte product type------------------*/
+    if(isset($_GET["email"])){
+        $email = $_GET["email"];
+        $sql__delete = "DELETE FROM customer_account WHERE email = '$email'";
+        $customer_account__delete = $connect->prepare($sql__delete);
+        $customer_account__delete -> execute();
+    }
 ?>
 <!-- Begin Page Content -->
 <div class="container-fluid">
@@ -43,7 +51,7 @@
                             <td><?php echo ($level.$arr__cusaccount["status"])?"Active":"Inactive"?></td>
                             <td><a href="<?php echo $level."insert__customeraccount"?>" class="btn btn-primary">Add</a></td>
                             <td><a href="#" class="btn btn-success">Edit</a></td>
-                            <td><a href="#" class="btn btn-danger">Delete</a></td>   
+                            <td><a href="customer__account.php?email=<?php echo $level.$arr__cusaccount["email"]?>" class="btn btn-danger">Delete</a></td>   
                         </tr>
                     <?php } ?>
                 </tbody>

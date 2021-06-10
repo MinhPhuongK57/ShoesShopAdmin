@@ -1,5 +1,13 @@
 <?php
-    include $level."index__data.php"
+    include $level."index__data.php";
+
+    /*-------------------Delte staff------------------*/
+    if(isset($_GET["id_staff"])){
+        $id_staff = $_GET["id_staff"];
+        $sql__delete = "DELETE FROM staff WHERE id_staff = '$id_staff'";
+        $staff__delete = $connect->prepare($sql__delete);
+        $staff__delete -> execute();
+    }
 ?>
 <!-- Begin Page Content -->
 <div class="container-fluid">
@@ -29,19 +37,19 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($list__staff_rowsdata as $arrstaff) 
+                    <?php foreach ($list__staff_rowsdata as $arr__staff) 
                     {
                     ?>
                         <tr>
-                            <td><?php echo $level.$arrstaff["id_staff"]?></td>
-                            <td><?php echo $level.$arrstaff["staffname"]?></td>
-                            <td><?php echo $level.$arrstaff["salary"]?></td>
-                            <td><?php echo $level.$arrstaff["phonenum"]?></td>
-                            <td><?php echo $level.$arrstaff["email"]?></td>
-                            <td><?php echo $level.$arrstaff["address"]?></td>
+                            <td><?php echo $level.$arr__staff["id_staff"]?></td>
+                            <td><?php echo $level.$arr__staff["staffname"]?></td>
+                            <td><?php echo $level.$arr__staff["salary"]?></td>
+                            <td><?php echo $level.$arr__staff["phonenum"]?></td>
+                            <td><?php echo $level.$arr__staff["email"]?></td>
+                            <td><?php echo $level.$arr__staff["address"]?></td>
                             <td><a href="<?php echo $level."insert__staff"?>" class="btn btn-primary">Add</a></td>
                             <td><a href="#" class="btn btn-success">Edit</a></td>
-                            <td><a href="#" class="btn btn-danger">Delete</a></td>   
+                            <td><a href="staff.php?id_staff=<?php echo $level.$arr__staff["id_staff"]?>" class="btn btn-danger">Delete</a></td>   
                         </tr>
                     <?php } ?>
                 </tbody>

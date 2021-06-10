@@ -59,7 +59,8 @@
                             <td><?php echo ($level.$arr__product["status"])?"Active":"Inactive"?></td>
                             <td><a href="<?php echo $level."insert__products.php"?>" class="btn btn-primary">Add</a></td>
                             <td><a href="edit__products.php?id_product=<?php echo $level.$arr__product["id_product"]?>" class="btn btn-success">Edit</a></td>
-                            <td><a href="product.php?id_product=<?php echo $level.$arr__product["id_product"]?>" class="btn btn-danger">Delete</a></td>   
+                            <td><a href="product.php?id_product=<?php echo $level.$arr__product["id_product"]?>" class="btn btn-danger">Delete</a></td>  
+                            
                         </tr>
                     <?php }?>
                 </tbody>
