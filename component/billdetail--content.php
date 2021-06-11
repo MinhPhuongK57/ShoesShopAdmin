@@ -49,7 +49,7 @@
                             <td><?php echo $level.$arr__billdetail["number"]?></td>
                             <td><?php echo $level.$arr__billdetail["price"]?></td>
                             <td><?php echo $level.$arr__billdetail["discount"]?></td>
-                            <td><?php echo $level.$arr__billdetail["totalprice"]?></td>
+                            <td><?php echo $level.$arr__billdetail["total"]?></td>
                             <td><?php echo ($level.$arr__billdetail["status"])?"Active":"Inactive"?></td>
                             <td><a href="<?php echo $level."insert__billdetail" ?>" class="btn btn-primary">Add</a></td>
                             <td><a href="#" class="btn btn-success">Edit</a></td>

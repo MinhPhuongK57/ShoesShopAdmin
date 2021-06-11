@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 4.9.2
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1:3306
--- Thời gian đã tạo: Th6 05, 2021 lúc 01:17 PM
--- Phiên bản máy phục vụ: 5.7.31
--- Phiên bản PHP: 7.3.21
+-- Thời gian đã tạo: Th6 11, 2021 lúc 01:04 AM
+-- Phiên bản máy phục vụ: 10.4.10-MariaDB
+-- Phiên bản PHP: 7.3.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -57,27 +58,29 @@ INSERT INTO `bill` (`id_bill`, `date`, `id_staff`, `id_customer`, `totalprice`, 
 
 DROP TABLE IF EXISTS `bill_detail`;
 CREATE TABLE IF NOT EXISTS `bill_detail` (
-  `id_bill` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
-  `id_product` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
-  `total` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `id_billdetail` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `ib_bill` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `id_product` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `number` int(11) NOT NULL,
   `price` double NOT NULL,
-  `discount` double NOT NULL,
-  `totalprice` double NOT NULL,
-  `status` int(11) NOT NULL
+  `discount` float NOT NULL,
+  `total` double NOT NULL,
+  `status` int(11) NOT NULL,
+  PRIMARY KEY (`id_billdetail`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `bill_detail`
 --
 
-INSERT INTO `bill_detail` (`id_bill`, `id_product`, `total`, `price`, `discount`, `totalprice`, `status`) VALUES
-('B1', 'Pro1', '2', 380, 0, 760, 1),
-('B1', 'Pro2', '4', 380, 0, 1520, 1),
-('B2', 'Pro3', '8', 380, 0, 3040, 1),
-('B3', 'Pro4', '1', 380, 0, 380, 1),
-('B4', 'Pro6', '2', 380, 0, 760, 1),
-('B4', 'Pro5', '2', 380, 0, 760, 1),
-('B5', 'Pro7', '2', 380, 0, 760, 1);
+INSERT INTO `bill_detail` (`id_billdetail`, `ib_bill`, `id_product`, `number`, `price`, `discount`, `total`, `status`) VALUES
+('bd1', 'b1', 'Pro1', 2, 380, 0, 760, 1),
+('bd2', 'b1', 'Pro2', 4, 380, 0, 1520, 1),
+('bd3', 'b2', 'Pro3', 8, 380, 0, 3040, 1),
+('bd4', 'b3', 'Pro4', 1, 380, 0, 380, 1),
+('bd5', 'b4', 'Pro6', 2, 380, 0, 760, 1),
+('bd6', 'b4', 'Pro5', 2, 380, 0, 760, 1),
+('bd7', 'b5', 'Pro7', 2, 380, 0, 760, 1);
 
 -- --------------------------------------------------------
 
@@ -131,7 +134,8 @@ CREATE TABLE IF NOT EXISTS `customer_account` (
 
 INSERT INTO `customer_account` (`username`, `phonenum`, `id_card`, `email`, `address`, `password`, `status`) VALUES
 ('Tống Thành Tài', '0343569245', 123456, 'ttt@gmail.com', '251 Chấn Hưng', '123tai', 0),
-('Trần Minh Phường', '0984373641', 123457, 'tmp@gmail.com', 'Ngã 5 Chuồng Chó', '123phuong', 0);
+('Trần Minh Phường', '0984373641', 123457, 'tmp@gmail.com', 'Ngã 5 Chuồng Chó', '123phuong', 0),
+('Tống Thành Tài', '0387666785', 1223341, 'tongthanhtai27052001@gmail.com', '251 Chấn Hưng', '123', 0);
 
 -- --------------------------------------------------------
 
