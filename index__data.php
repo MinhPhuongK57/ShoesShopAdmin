@@ -51,4 +51,3 @@
     $list__provider-> execute();
     $list__provider_rowsdata = $list__provider->fetchAll();
 
-    

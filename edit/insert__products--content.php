@@ -1,6 +1,8 @@
 <?php
     $level = "";
     include $level."index__data.php";
+?>
+<?php
     if(isset($_POST['idproduct']) )
     {
         $id_product = $_POST['idproduct'];

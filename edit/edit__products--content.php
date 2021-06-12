@@ -1,5 +1,4 @@
 <?php
-    $level = "";
     include $level."index__data.php";
     
     if(isset($_GET["id_product"]))
@@ -10,10 +9,10 @@
         $list__product_select -> execute();
         $list__product_select_rowsdata = $list__product_select ->fetchAll();
     }
-    
-    if(isset($_POST["idproduct"]))
+?>
+<?php
+    if(isset($_POST["update"]))
     {
-        $id_product = $_POST["idproduct"];
         $productname= $_POST['productname'];
         $id_producttype = $_POST['idproducttype'];
         $id_provider = $_POST['idprovider'];
@@ -26,15 +25,15 @@
         //Image
         $image = $_FILES['image']['name'];
         $image_tmp = $_FILES['image']['tmp_name'];
+        move_uploaded_file($image_tmp,'img/'.$image);
         
         /*-------------------Update product------------------*/
         
         $sql__update = "UPDATE product SET productname = '$productname',id_producttype = '$id_producttype',id_provider= '$id_provider',
         productimage = $image,total = $total , price = $price , color = '$color' , size = $size , description = '$description',status = $status
         WHERE id_product = $id_product";
-        move_uploaded_file($image_tmp,'img/'.$image);
-        $list__update__product = $connect->prepare($sql__update);
-        $list__update__product ->execute();
+        $list__update__product = $connect-> prepare($sql__update);
+        $list__update__product -> execute();
         $list__update_product_rowsdata = $list__update__product ->fetchAll();
     }
 ?>
@@ -163,7 +162,7 @@
                 </div>
             </div>
             <div class="col-12 p-2">
-                <button class="btn btn-primary" type="submit" name="submitupdate" id="fun" onclick=click();>Update</button>
+                <button class="btn btn-primary" type="submit" value="Update" name="update" id="fun" onclick=click();>Update</button>
             </div>
         </form>  
         <?php } ?>

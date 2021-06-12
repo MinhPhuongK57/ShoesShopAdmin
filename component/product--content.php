@@ -1,9 +1,9 @@
 <?php
     include $level."index__data.php";
-
     /*-------------------Delte product------------------*/
     if(isset($_GET["id_product"])){
         $id_product = $_GET["id_product"];
+
         $sql__delete = "DELETE FROM product WHERE id_product = '$id_product'";
         $product__delete = $connect->prepare($sql__delete);
         $product__delete -> execute();
@@ -60,7 +60,6 @@
                             <td><a href="<?php echo $level."insert__products.php"?>" class="btn btn-primary">Add</a></td>
                             <td><a href="edit__products.php?id_product=<?php echo $level.$arr__product["id_product"]?>" class="btn btn-success">Edit</a></td>
                             <td><a href="product.php?id_product=<?php echo $level.$arr__product["id_product"]?>" class="btn btn-danger">Delete</a></td>  
-                            
                         </tr>
                     <?php }?>
                 </tbody>
