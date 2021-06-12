@@ -1,42 +1,45 @@
 <?php
-    include $level."index__data.php";
-?>
-<?php
-    //staff__login
-    if(isset($_POST["email"]))
-    { 
-        $email = isset($_POST['email']) ? $_POST['email'] : '';
-        $password = isset($_POST['password']) ? $_POST['password'] : '';
+    ob_start();
+    session_start();
+    $level = "";
+    include $level."DB/database.php";
+    if(isset($_POST['login']))
+    {
+        // echo "<pre>";
+        // print_r($_POST);
+        // die;
+        $email = $_POST['email'];
+        $password = $_POST['password'];
 
-        $SQL_staffemail = "SELECT email from staff where email = '$email' and password = '$password' ";
-        $list__staffemail = $connect->prepare($SQL_staffemail);
-        $list__staffemail -> execute();
-        $list__staffemail_rowsdata = $list__staffemail ->fetchAll();
-        // $id_staff = $list__staffemail_rowsdata[0][0];
-        $emailtest = $list__staffemail_rowsdata[0][4];
-        $passwordtest = $list__staffemail_rowsdata[0][7];
-        if($email != "" && $password != "")
+        //TẠO COOKIE
+        if(isset($_POST['remember']))
         {
-            header("location:login.php");
+            //tạo cookie trong 3 ngày cho 1 tài khoản
+            setcookie("email",$email,time() + (86400 * 3), "/");
+            setcookie("password",$_POST['password'],time() + (86400 * 3), "/"); //86400 =  1 day
         }
-        else{
-            header("location:index.php?email=$email");
+        $SQL_staff_email = "SELECT * from staff where email = '$email' and password = '$password' ";
+        $list__staff_email = $connect->prepare($SQL_staff_email);
+        $list__staff_email -> execute();
+        $list__staff_email_rowsdata = $list__staff_email ->fetchAll();
+
+        if(count($list__staff_email_rowsdata))
+        {
+            $_SESSION["login"] = $list__staff_email_rowsdata;
+            header("location:index.php");
         }
     }
+    //COOKIE
+    $email = "";
+    $password = "";
+    $check = false; //Check cookie remember
+    if(isset($_COOKIE["email"]) && isset($_COOKIE["password"]))
+    {
+        $email = $_COOKIE["email"];
+        $password = $_COOKIE["password"];
+        $check = true;
+    }
 ?>
-<?php
-	// $id_staff = $list__staffemail_rowsdata[0][0];
-					
-    // if($id_staff !="")
-    // {
-    //     header("location:index.php?email=$id_staff");
-    // }
-    // else
-    // {	
-    //     header("location:login.php");
-    // }	
-?>
-
 <body class="bg-gradient-primary">
 
 <div class="container">
@@ -56,24 +59,22 @@
                                 <div class="text-center">
                                     <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
                                 </div>
-
                                 <form action="" method="post" class="user g-3 needs-validation" enctype="multipart/form-data" validate>
                                     <div class="form-group">
                                         <input type="email" class="form-control form-control-user"
                                             id="exampleInputEmail" aria-describedby="emailHelp"
-                                            placeholder="Enter Email Address..." name="email" value="" autocomplete="off" required>
+                                            placeholder="Enter Email Address..." name="email"  value="<?php echo $email?>" autocomplete="off" required>
                                     </div>
                                     <div class="form-group">
                                         <input type="password" class="form-control form-control-user"
-                                            id="exampleInputPassword" placeholder="Password" name="password" value="" autocomplete="off" required>
+                                            id="exampleInputPassword" placeholder="Password" name="password" value="<?php echo $password?>" autocomplete="off" required>
                                     </div>
                                     <div class="form-group">
                                         <div class="custom-control custom-checkbox small">
-                                            <input type="checkbox" class="custom-control-input" id="customCheck" required>
+                                            <input <?php echo ($check)?"checked":""?> type="checkbox" class="custom-control-input"  name="remember" value="1" id="customCheck">
                                             <label class="custom-control-label" for="customCheck">Remember Me</label>
                                         </div>
                                     </div>
-                                    <hr>
                                     <hr>
                                     <button type = "submit" name="login" class="btn btn-primary btn-user btn-block">
                                         Login

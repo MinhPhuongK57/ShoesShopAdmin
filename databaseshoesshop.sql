@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.2
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1:3306
--- Thời gian đã tạo: Th6 11, 2021 lúc 01:04 AM
--- Phiên bản máy phục vụ: 10.4.10-MariaDB
--- Phiên bản PHP: 7.3.12
+-- Thời gian đã tạo: Th6 12, 2021 lúc 10:46 AM
+-- Phiên bản máy phục vụ: 5.7.31
+-- Phiên bản PHP: 7.3.21
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -59,7 +58,7 @@ INSERT INTO `bill` (`id_bill`, `date`, `id_staff`, `id_customer`, `totalprice`, 
 DROP TABLE IF EXISTS `bill_detail`;
 CREATE TABLE IF NOT EXISTS `bill_detail` (
   `id_billdetail` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `ib_bill` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `id_bill` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `id_product` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `number` int(11) NOT NULL,
   `price` double NOT NULL,
@@ -73,8 +72,7 @@ CREATE TABLE IF NOT EXISTS `bill_detail` (
 -- Đang đổ dữ liệu cho bảng `bill_detail`
 --
 
-INSERT INTO `bill_detail` (`id_billdetail`, `ib_bill`, `id_product`, `number`, `price`, `discount`, `total`, `status`) VALUES
-('bd1', 'b1', 'Pro1', 2, 380, 0, 760, 1),
+INSERT INTO `bill_detail` (`id_billdetail`, `id_bill`, `id_product`, `number`, `price`, `discount`, `total`, `status`) VALUES
 ('bd2', 'b1', 'Pro2', 4, 380, 0, 1520, 1),
 ('bd3', 'b2', 'Pro3', 8, 380, 0, 3040, 1),
 ('bd4', 'b3', 'Pro4', 1, 380, 0, 380, 1),
@@ -170,9 +168,9 @@ INSERT INTO `product` (`id_product`, `productname`, `id_producttype`, `id_provid
 ('Pro2', 'HYPERVENOM2', 'Kid', 'Nike', 'product4.jpg', 38, 380, 'Blue', 37, 'Personalized children\'s sports shoes', 1),
 ('Pro1', 'HYPERVENOM1', 'Kid', 'Nike', 'product1.jpg', 38, 380, 'Red', 36, 'Personalized children\'s sports shoes', 1),
 ('Pro6', 'HYPERVENOM6', 'Men', 'Adidas', 'product6.jpg', 38, 380, 'Green', 41, 'Men\'s Firm-Ground Football Boot', 1),
-('Pro7', 'HYPERVENOM7', 'Men', 'Adidas', 'product1.jpg', 38, 380, 'Grey', 42, 'Men\'s Firm-Ground Football Boot', 1),
-('Pro8', 'HYPERVENOM8', 'Woman', 'Adidas', 'product5.jpg', 38, 380, 'Black', 43, 'Personalized women\'s sports shoes', 1),
-('Pro9', 'HYPERVENOM9', 'Woman', 'Adidas', 'product1.jpg', 38, 380, 'Green', 44, 'Personalized women\'s sports shoes', 1),
+('Pro11', 'HYPERVENOM66', 'Kid', 'Nike', 'product1.jpg', 18, 400, '', 45, 'Real Nike Air Max 2021', 1),
+('Pro15', 'HYPERVENOM11', 'Kid', 'Nike', 'product4.jpg', 54, 400, '', 40, 'Description xAir', 1),
+('Pro18', 'HYPERVENOM18', 'Kid', 'Adidas', 'product1.jpg', 15, 400, '', 43, 'Real Nike Air Max 2021', 1),
 ('Pro10', 'HYPERVENOM10', 'Woman', 'Adidas', 'product4.jpg', 38, 380, 'Green', 45, 'Personalized women\'s sports shoes', 1);
 
 -- --------------------------------------------------------
@@ -238,7 +236,7 @@ CREATE TABLE IF NOT EXISTS `staff` (
   `email` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `address` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `status` int(11) NOT NULL,
-  `pasword` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `password` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id_staff`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -246,7 +244,7 @@ CREATE TABLE IF NOT EXISTS `staff` (
 -- Đang đổ dữ liệu cho bảng `staff`
 --
 
-INSERT INTO `staff` (`id_staff`, `staffname`, `salary`, `phonenum`, `email`, `address`, `status`, `pasword`) VALUES
+INSERT INTO `staff` (`id_staff`, `staffname`, `salary`, `phonenum`, `email`, `address`, `status`, `password`) VALUES
 ('NV02', 'Ngyễn Thị Ánh', 6000000, '34312678', 'anh@gmail.com', 'Hà Nội', 1, '123anh'),
 ('NV01', 'Lê Văn Tám', 5000000, '34412345', 'tam@gmail.com', 'Bến Tre', 2, '123tam'),
 ('NV03', 'Trần Thanh Tâm', 4000000, '32345312', 'tam@gmail.com', 'Hải Phòng', 3, '123tam'),
