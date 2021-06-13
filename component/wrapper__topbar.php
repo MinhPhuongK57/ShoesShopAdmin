@@ -1,3 +1,6 @@
+        <?php 
+            $email=isset($_COOKIE["email"]) ? $_COOKIE["email"] : "Admin"; 
+        ?>
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
 
@@ -198,13 +201,9 @@
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">
+                                    <!--Echo email-->
                                     <?php
-                                        if(isset($_SESSION["login"])){
-                                            echo $_SESSION["login"][4];
-                                        }
-                                        else{
-                                            echo "Not connected";
-                                        }
+                                        echo strtoupper($email);
                                     ?>
                                 </span>
                                 <img class="img-profile rounded-circle" src="<?php echo $level.img__path."undraw_profile.svg"?>">

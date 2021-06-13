@@ -5,9 +5,6 @@
     include $level."DB/database.php";
     if(isset($_POST['login']))
     {
-        // echo "<pre>";
-        // print_r($_POST);
-        // die;
         $email = $_POST['email'];
         $password = $_POST['password'];
 
@@ -32,7 +29,7 @@
     //COOKIE
     $email = "";
     $password = "";
-    $check = false; //Check cookie remember
+    $check = false; //Check cookie remember me
     if(isset($_COOKIE["email"]) && isset($_COOKIE["password"]))
     {
         $email = $_COOKIE["email"];

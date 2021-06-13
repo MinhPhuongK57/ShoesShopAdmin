@@ -57,7 +57,7 @@
             <form action="" method="post" class="row g-3 needs-validation" enctype="multipart/form-data" validate>
             <div class="col-md-4 p-4">
                 <label for="validationCustom01" class="form-label">Product ID</label>
-                <input type="text" class="form-control" id="validationCustom01" name="idproduct" value="<?php echo $list__select['id_product'];?>" placeholder="Enter Product ID" required>
+                <input type="text" class="form-control" id="validationCustom01" name="idproduct" value="<?php echo $list__select['id_product'];?>" placeholder="Enter Product ID" readonly>
                 <div class="valid-feedback">
                     Looks good!
                 </div>
