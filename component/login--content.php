@@ -12,13 +12,17 @@
         if(isset($_POST['remember']))
         {
             //tạo cookie trong 3 ngày cho 1 tài khoản
-            setcookie("email",$email,time() + (86400 * 3), "/");
-            setcookie("password",$_POST['password'],time() + (86400 * 3), "/"); //86400 =  1 day
+            setcookie("email",$email,time() + (3600 * 3), "/");
+            setcookie("password",$_POST['password'],time() + (3600 * 3), "/"); //86400 =  1 day
         }
         $SQL_staff_email = "SELECT * from staff where email = '$email' and password = '$password' ";
         $list__staff_email = $connect->prepare($SQL_staff_email);
         $list__staff_email -> execute();
         $list__staff_email_rowsdata = $list__staff_email ->fetchAll();
+
+
+
+
 
         if(count($list__staff_email_rowsdata))
         {

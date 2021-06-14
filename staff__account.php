@@ -11,10 +11,9 @@
     $isIndex = false;
     $isProduct = false;
     $isProductType=false;
-    $isInfopage = true;
+    $isInfopage = false;
     $isStaff = false;
     $isCustomerAccount = false;
-
     //Insert
     $isInsertProduct = false;
     $isInsertProductType = false;
@@ -24,11 +23,14 @@
     $isInsertBill = false;
     $isInsertBillDetail = false;
 
+
     //Edit
     $isEditProduct = false;
-    $isStaffAccount =  false;
+    $isStaffAccount =  true;
 
-    
+
+
+
     $isBill = false;
     $isBillDetail = false;
     $isProvider = false;

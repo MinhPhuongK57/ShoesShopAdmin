@@ -71,6 +71,10 @@
     {
         include $level.tit__path.'title__edit__products.php'; 
     }
+    if($isStaffAccount == true)
+    {
+        include $level.tit__path.'title__staff__account.php';
+    }
     //Sidebar
     include $level.com__path.'sidebar.php';
     //Wrapper
@@ -144,6 +148,9 @@
     if($isEditProduct == true)
     {
         include $level.edi__path.'edit__products--content.php';
+    }
+    if($isStaffAccount == true){
+        include $level.edi__path.'staff__account--content.php';
     }
 
     //Footer

@@ -26,6 +26,9 @@
 
     //Edit
     $isEditProduct = false;
+    $isStaffAccount =  false;
+
+    
     $isBill = false;
     $isBillDetail = false;
     $isProvider = false;
