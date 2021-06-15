@@ -3,40 +3,44 @@
     session_start();
     $level = "";
     include $level."DB/database.php";
+
     if(isset($_POST['login']))
     {
-        $email = $_POST['email'];
+        
+        $admin_name = $_POST['admin_name'];
         $password = $_POST['password'];
 
         //TẠO COOKIE
         if(isset($_POST['remember']))
         {
             //tạo cookie trong 3 ngày cho 1 tài khoản
-            setcookie("email",$email,time() + (3600 * 3), "/");
+            setcookie("admin_name",$admin_name,time() + (3600 * 3), "/");
             setcookie("password",$_POST['password'],time() + (3600 * 3), "/"); //86400 =  1 day
         }
-        $SQL_staff_email = "SELECT * from staff where email = '$email' and password = '$password' ";
-        $list__staff_email = $connect->prepare($SQL_staff_email);
-        $list__staff_email -> execute();
-        $list__staff_email_rowsdata = $list__staff_email ->fetchAll();
+        else{
+            setcookie("admin_name",$admin_name,time() - (3600 * 3), "/"); 
+            setcookie("password",$password,time() - (3600 * 3), "/"); 
+        }
 
-
-
-
-
-        if(count($list__staff_email_rowsdata))
+        $SQL_admin_name = "SELECT * from account__admin where admin_name = '$admin_name' and password = '$password' ";
+        $list__admin_name = $connect->prepare($SQL_admin_name);
+        $list__admin_name -> execute();
+        $list__admin_name_rowsdata = $list__admin_name ->fetchAll();
+        
+        if(count($list__admin_name_rowsdata))
         {
-            $_SESSION["login"] = $list__staff_email_rowsdata;
+            $_SESSION["login"] = $list__admin_name_rowsdata;
             header("location:index.php");
         }
     }
+    
     //COOKIE
-    $email = "";
-    $password = "";
+    $admin_name = "";
+    $password= "";
     $check = false; //Check cookie remember me
-    if(isset($_COOKIE["email"]) && isset($_COOKIE["password"]))
+    if(isset($_COOKIE["admin_name"]) && isset($_COOKIE["password"]))
     {
-        $email = $_COOKIE["email"];
+        $admin_name = $_COOKIE["admin_name"];
         $password = $_COOKIE["password"];
         $check = true;
     }
@@ -62,9 +66,9 @@
                                 </div>
                                 <form action="" method="post" class="user g-3 needs-validation" enctype="multipart/form-data" validate>
                                     <div class="form-group">
-                                        <input type="email" class="form-control form-control-user"
+                                        <input type="text" class="form-control form-control-user"
                                             id="exampleInputEmail" aria-describedby="emailHelp"
-                                            placeholder="Enter Email Address..." name="email"  value="<?php echo $email?>" autocomplete="off" required>
+                                            placeholder="Enter Admin Name..." name="admin_name"  value="<?php echo $admin_name?>"  required>
                                     </div>
                                     <div class="form-group">
                                         <input type="password" class="form-control form-control-user"

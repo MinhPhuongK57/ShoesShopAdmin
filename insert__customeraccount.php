@@ -12,20 +12,19 @@
     $isProduct = false;
     $isProductType=false;
     $isInfopage = false;
-    $isStaff = false;
     $isCustomerAccount = false;
+    $isInformationAdmin = false;
     //Insert
     $isInsertProduct = false;
     $isInsertProductType = false;
     $isInsertCustomerAccount = true;
-    $isInsertStaff = false;
     $isInsertProvider = false;
     $isInsertBill = false;
     $isInsertBillDetail = false;
 
     //Update
     $isEditProduct = false;
-    $isStaffAccount =  false;
+    $isAdminAccount =  false;
 
     
     $isBill = false;

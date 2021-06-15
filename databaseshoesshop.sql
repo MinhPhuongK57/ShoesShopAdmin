@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1:3306
--- Thời gian đã tạo: Th6 12, 2021 lúc 10:46 AM
+-- Thời gian đã tạo: Th6 14, 2021 lúc 04:32 PM
 -- Phiên bản máy phục vụ: 5.7.31
 -- Phiên bản PHP: 7.3.21
 
@@ -31,7 +31,6 @@ DROP TABLE IF EXISTS `bill`;
 CREATE TABLE IF NOT EXISTS `bill` (
   `id_bill` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `date` date NOT NULL,
-  `id_staff` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `id_customer` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `totalprice` double NOT NULL,
   `status` int(11) NOT NULL,
@@ -42,12 +41,12 @@ CREATE TABLE IF NOT EXISTS `bill` (
 -- Đang đổ dữ liệu cho bảng `bill`
 --
 
-INSERT INTO `bill` (`id_bill`, `date`, `id_staff`, `id_customer`, `totalprice`, `status`) VALUES
-('b1', '2020-11-02', 'NV01', '123456', 2280, 1),
-('b2', '2020-11-04', 'NV03', '123456', 3040, 1),
-('b3', '2020-11-27', 'NV04', '123456', 380, 1),
-('b4', '2020-11-04', 'NV01', '123457', 1520, 1),
-('b5', '2020-11-19', 'NV02', '123457', 760, 1);
+INSERT INTO `bill` (`id_bill`, `date`, `id_customer`, `totalprice`, `status`) VALUES
+('b1', '2020-11-02', '123456', 2280, 1),
+('b2', '2020-11-04', '123456', 3040, 1),
+('b3', '2020-11-27', '123456', 380, 1),
+('b4', '2020-11-04', '123457', 1520, 1),
+('b5', '2020-11-19', '123457', 760, 1);
 
 -- --------------------------------------------------------
 
@@ -131,7 +130,7 @@ CREATE TABLE IF NOT EXISTS `customer_account` (
 --
 
 INSERT INTO `customer_account` (`username`, `phonenum`, `id_card`, `email`, `address`, `password`, `status`) VALUES
-('Tống Thành Tài', '0343569245', 123456, 'ttt@gmail.com', '251 Chấn Hưng', '123tai', 0),
+('Trần Minh Phường', '03216546456', 1231654654, 'tmp@gmail.com', 'Thành Phố Hồ Chí Minh', '123tai', 0),
 ('Trần Minh Phường', '0984373641', 123457, 'tmp@gmail.com', 'Ngã 5 Chuồng Chó', '123phuong', 0),
 ('Tống Thành Tài', '0387666785', 1223341, 'tongthanhtai27052001@gmail.com', '251 Chấn Hưng', '123', 0);
 
@@ -166,11 +165,9 @@ INSERT INTO `product` (`id_product`, `productname`, `id_producttype`, `id_provid
 ('Pro4', 'HYPERVENOM4', 'Men', 'Nike', 'product5.jpg', 38, 380, 'Grey', 39, 'Men\'s Firm-Ground Football Boot', 1),
 ('Pro3', 'HYPERVENOM3', 'Kid', 'Nike', 'product3.jpg', 38, 380, 'White', 38, 'Personalized children\'s sports shoes', 1),
 ('Pro2', 'HYPERVENOM2', 'Kid', 'Nike', 'product4.jpg', 38, 380, 'Blue', 37, 'Personalized children\'s sports shoes', 1),
-('Pro1', 'HYPERVENOM1', 'Kid', 'Nike', 'product1.jpg', 38, 380, 'Red', 36, 'Personalized children\'s sports shoes', 1),
-('Pro6', 'HYPERVENOM6', 'Men', 'Adidas', 'product6.jpg', 38, 380, 'Green', 41, 'Men\'s Firm-Ground Football Boot', 1),
-('Pro11', 'HYPERVENOM66', 'Kid', 'Nike', 'product1.jpg', 18, 400, '', 45, 'Real Nike Air Max 2021', 1),
-('Pro15', 'HYPERVENOM11', 'Kid', 'Nike', 'product4.jpg', 54, 400, '', 40, 'Description xAir', 1),
-('Pro18', 'HYPERVENOM18', 'Kid', 'Adidas', 'product1.jpg', 15, 400, '', 43, 'Real Nike Air Max 2021', 1),
+('Pro11', 'HYPERVENOM66', 'Kid', 'Nike', 'product1.jpg', 18, 400, 'Red', 45, 'Real Nike Air Max 2021', 1),
+('Pro15', 'HYPERVENOM11', 'Kid', 'Nike', 'product4.jpg', 54, 400, 'Blue', 40, 'Description xAir', 1),
+('Pro18', 'HYPERVENOM18', 'Kid', 'Adidas', 'product1.jpg', 15, 400, 'Pink', 43, 'Real Nike Air Max 2021', 1),
 ('Pro10', 'HYPERVENOM10', 'Woman', 'Adidas', 'product4.jpg', 38, 380, 'Green', 45, 'Personalized women\'s sports shoes', 1);
 
 -- --------------------------------------------------------
@@ -245,16 +242,17 @@ CREATE TABLE IF NOT EXISTS `staff` (
 --
 
 INSERT INTO `staff` (`id_staff`, `staffname`, `salary`, `phonenum`, `email`, `address`, `status`, `password`) VALUES
-('NV02', 'Ngyễn Thị Ánh', 6000000, '34312678', 'anh@gmail.com', 'Hà Nội', 1, '123anh'),
-('NV01', 'Lê Văn Tám', 5000000, '34412345', 'tam@gmail.com', 'Bến Tre', 2, '123tam'),
-('NV03', 'Trần Thanh Tâm', 4000000, '32345312', 'tam@gmail.com', 'Hải Phòng', 3, '123tam'),
+('NV02', 'Ngyễn Thị Ánh', 6000000, '34312678', 'anh@gmail.com', 'Hà Nội', 1, '123anhaA'),
+('NV01', 'Trần Thanh Tâm', 5000000, '0347281807', 'tamrom@gmail.com', 'Đồng Tháp', 2, '123tam'),
+('NV03', 'Trần Thanh Tâm', 4000000, '32345312', 'tamhp@gmail.com', 'Hải Phòng', 3, '123tamhp'),
 ('NV04', 'Phạm Nhật Vượng', 9000000, '34545343', 'vuong@gmail.com', 'Bình Phước', 0, '123vuong'),
 ('NV05', 'Lê Thị Riêng', 6000000, '32345532', 'rieng@gmail.com', 'TP Hồ Chí Minh', 1, '123rieng'),
 ('NV06', 'Lê Văn Bưởi', 5000000, '33444268', 'buoi@gmail.com', 'Vũng Tàu', 2, '123buoi'),
 ('NV07', 'Ngyễn Thị Ánh Tuyết', 5000000, '32343476', 'tuyet@gmail.com', 'Cà Mau', 2, '123tuyet'),
 ('NV08', 'Phạm Nhất Thống', 5000000, '30970980', 'thong@gmail.com', 'Sóc Trăng', 2, '123thong'),
 ('NV09', 'Trần Văn Hai', 4000000, '32300972', 'hai@gmail.com', 'Sóc Trăng', 3, '123hai'),
-('NV10', 'Chu Thị Hồng', 5000000, '98709335', 'hong@gmail.com', 'Sóc Trăng', 2, '123hong');
+('NV10', 'Chu Thị Hồng', 5000000, '98709335', 'hong@gmail.com', 'Sóc Trăng', 2, '123hong'),
+('NV111', 'Nhân Viên Số 111', 2900000, '31566156', 'NV111@gmail.com', 'Thành phố Hồ Chí Minh', 1, 'HelloWorld');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

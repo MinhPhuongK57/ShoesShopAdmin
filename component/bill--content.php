@@ -1,7 +1,7 @@
 <?php
     include $level."index__data.php";
 
-    /*-------------------Delte staff------------------*/
+    /*-------------------Delte ------------------*/
     if(isset($_GET["id_bill"])){
         $id_bill= $_GET["id_bill"];
         $sql__delete = "DELETE FROM bill WHERE id_bill = '$id_bill'";
@@ -26,7 +26,6 @@
                 <thead>
                     <tr>
                         <th>Bill</th>
-                        <th>Staff</th>
                         <th>Customer</th>
                         <th>Date</th>
                         <th>Total Price</th>
@@ -42,7 +41,6 @@
                     ?>
                         <tr>
                             <td><?php echo $level.$arr__bill["id_bill"]?></td>
-                            <td><?php echo $level.$arr__bill["id_staff"]?></td>
                             <td><?php echo $level.$arr__bill["id_customer"]?></td>
                             <td><?php echo date("d-m-Y",strtotime( $level.$arr__bill["date"]))?></td>
                             <td><?php echo $level.$arr__bill["totalprice"]?></td>

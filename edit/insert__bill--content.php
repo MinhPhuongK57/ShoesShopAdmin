@@ -5,13 +5,12 @@
     {
         $id_bill = $_POST['id_bill'];
         $date = $_POST['date'];
-        $id_staff = $_POST['id_staff'];
         $id_customer = $_POST['id_customer'];
         $totalprice = $_POST['totalprice'];
         $status = $_POST['status'];
         
         /*-------------------Insert product------------------*/
-        $sql__insert__bill = "INSERT INTO bill VALUES('$id_bill','$date','$id_staff','$id_customer','$totalprice',$status)";
+        $sql__insert__bill = "INSERT INTO bill VALUES('$id_bill','$date','$id_customer','$totalprice',$status)";
         $product__insert__bill = $connect->prepare($sql__insert__bill);
         $product__insert__bill -> execute();
     }
@@ -32,9 +31,17 @@
             <a href="<?php echo $level."bill.php"?>" class="btn btn-primary" type="button">Back to bill</a>
         </div>
         <form action="" method="post" class="row g-3 needs-validation" enctype="multipart/form-data" validate>
-            <div class="col-md-3 p-4">
+            <div class="col-md-4 p-4">
                 <label for="username" class="form-label">Bill</label>
                 <input type="text" class="form-control" id="validationCustom01" name="id_bill" value="" placeholder="Enter bill" autocomplete="off" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+
+            <div class="col-md-4 p-4">
+                <label for="validationCustom05" class="form-label">Customer</label>
+                <input type="text" min = "0" max="150"class="form-control" id="validationCustom05" name="id_customer" value="" placeholder="Enter ID customer" autocomplete="off" required>
                 <div class="valid-feedback">
                     Looks good!
                 </div>
@@ -46,35 +53,14 @@
                     Looks good!
                 </div>
             </div>
-            <div class="col-md-3 p-4">
-                <label for="validationCustom02" class="form-label">Staff</label>
-                <select class="form-control" id="validationCustom03" name="id_staff" value="" required>
-                        <option value="">Choose Staff</option>
-                    <?php foreach ($list__staff_rowsdata as $arr_staff) 
-                    {  
-                    ?>
-                        <option value="<?php echo $arr_staff["id_staff"]?>"><?php echo $arr_staff["id_staff"]?></option>
-                    <?php
-                    } 
-                    ?>
-                </select>
-            </div>
-
-            <div class="col-md-3 p-4">
-                <label for="validationCustom05" class="form-label">Customer</label>
-                <input type="text" min = "0" max="150"class="form-control" id="validationCustom05" name="id_customer" value="" placeholder="Enter ID customer" autocomplete="off" required>
-                <div class="valid-feedback">
-                    Looks good!
-                </div>
-            </div>
-            <div class="col-md-3 p-4">
+            <div class="col-md-2 p-4">
                 <label for="validationCustom06" class="form-label">Total Price</label>
                 <input type="text" class="form-control" id="validationCustom06" name="totalprice" value="" placeholder="Enter total price" autocomplete="off" required>
                 <div class="valid-feedback">
                     Looks good!
                 </div>
             </div>
-            <div class="col-md-3 p-4">
+            <div class="col-md-2 p-4">
                 <label for="validationCustom08" class="form-label">Status</label>
                 <input type="number" min="0" max="1" class="form-control" id="validationCustom08" name="status" value="" placeholder="Choose status" required>
                 <div class="valid-feedback">

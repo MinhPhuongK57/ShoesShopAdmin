@@ -1,7 +1,7 @@
 <?php
     include $level."index__data.php";
 
-    /*-------------------Delte staff------------------*/
+    /*-------------------Delte ------------------*/
     if(isset($_GET["id_billdetail"])){
         $id_billdetail = $_GET["id_billdetail"];
         $sql__delete = "DELETE FROM bill_detail WHERE id_billdetail = '$id_billdetail'";

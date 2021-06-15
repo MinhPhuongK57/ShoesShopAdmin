@@ -18,10 +18,6 @@
     {
         include $level.tit__path.'title__product__type.php';
     }
-    if($isStaff == true)
-    {
-        include $level.tit__path.'title__staff.php';
-    }
     if($isCustomerAccount == true)
     {
         include $level.tit__path.'title__customer--account.php';
@@ -38,10 +34,6 @@
     {
         include $level.tit__path.'title__provider.php';
     }
-    if($isInsertStaff == true)
-    {
-        include $level.tit__path.'title__insert__staff.php';
-    }
     if($isInsertProvider == true)
     {
         include $level.tit__path.'title__insert__provider.php';
@@ -53,6 +45,10 @@
     if($isInsertBillDetail == true)
     {
         include $level.tit__path.'title__insert__billdetail.php';
+    }
+    if($isInformationAdmin == true)
+    {
+        include $level.tit__path.'title__information__admin.php';
     }
     //Add Update Delete
     if($isInsertProduct == true)
@@ -71,9 +67,9 @@
     {
         include $level.tit__path.'title__edit__products.php'; 
     }
-    if($isStaffAccount == true)
+    if($isAdminAccount == true)
     {
-        include $level.tit__path.'title__staff__account.php';
+        include $level.tit__path.'title__admin__account.php';
     }
     //Sidebar
     include $level.com__path.'sidebar.php';
@@ -90,10 +86,6 @@
     if($isProduct == true)
     {
         include $level.com__path.'product--content.php';
-    }
-    if($isStaff == true)
-    {
-        include $level.com__path.'staff--content.php';
     }
     if($isCustomerAccount == true)
     {
@@ -115,7 +107,10 @@
     {
         include $level.com__path.'provider--content.php';
     }
-
+    if($isInformationAdmin == true)
+    {
+        include $level.com__path.'information__admin--content.php';
+    }
     //Add Update Delete
     if($isInsertProduct == true)
     {
@@ -128,10 +123,6 @@
     if($isInsertCustomerAccount == true)
     {
         include $level.edi__path.'insert__customeraccount--content.php';
-    }
-    if($isInsertStaff == true)
-    {
-        include $level.edi__path.'insert__staff--content.php';
     }
     if($isInsertProvider == true)
     {
@@ -149,8 +140,8 @@
     {
         include $level.edi__path.'edit__products--content.php';
     }
-    if($isStaffAccount == true){
-        include $level.edi__path.'staff__account--content.php';
+    if($isAdminAccount == true){
+        include $level.edi__path.'edit__admin__account.php';
     }
 
     //Footer

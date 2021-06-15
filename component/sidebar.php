@@ -1,5 +1,6 @@
 <?php
-     $level ="";
+    $level ="";
+    $admin_name=isset($_COOKIE["admin_name"])?$_COOKIE["admin_name"]:""; 
 ?>
 </head>
 <body id="page-top">
@@ -11,7 +12,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?php echo $level."index.php"?>">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php?<?php echo $admin_name ?>">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
@@ -23,7 +24,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="<?php echo $level."index.php"?>">
+                <a class="nav-link" href="index.php?<?php echo $admin_name?>">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Home page</span></a>
             </li>
@@ -46,13 +47,12 @@
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">The main components :</h6>
-                        <a class="collapse-item" href="product.php">Product</a>
-                        <a class="collapse-item" href="product__type.php">Product Type</a>
-                        <a class="collapse-item" href="customer__account.php">Customer Account</a>
-                        <a class="collapse-item" href="staff.php">Staff</a>
-                        <a class="collapse-item" href="provider.php">Provider</a>
-                        <a class="collapse-item" href="bill.php">Bill</a>
-                        <a class="collapse-item" href="billdetail.php">Bill Detail</a>
+                        <a class="collapse-item" href="product.php?<?php echo $admin_name?>">Product</a>
+                        <a class="collapse-item" href="product__type.php?<?php echo $admin_name?>">Product Type</a>
+                        <a class="collapse-item" href="customer__account.php?<?php echo $admin_name?>">Customer Account</a>
+                        <a class="collapse-item" href="provider.php?<?php echo $admin_name?>">Provider</a>
+                        <a class="collapse-item" href="bill.php?<?php echo $admin_name?>">Bill</a>
+                        <a class="collapse-item" href="billdetail.php?<?php echo $admin_name?>">Bill Detail</a>
                     </div>
                 </div>
             </li>

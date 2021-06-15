@@ -19,13 +19,6 @@
     $list__product_type = $connect->prepare($SQL_str_listproduct_type);
     $list__product_type -> execute();
     $list__product_type_rowsdata = $list__product_type ->fetchAll();
-    
-
-    //staff
-    $SQL_str_liststaff= "SELECT * from staff";
-    $list__staff= $connect->prepare($SQL_str_liststaff);
-    $list__staff -> execute();
-    $list__staff_rowsdata = $list__staff ->fetchAll();
 
     //customer__account
     $SQL_str_listcus_account= "SELECT * from customer_account";

@@ -12,13 +12,13 @@
     $isProduct = false;
     $isProductType=false;
     $isInfopage = false;
-    $isStaff = false;
     $isCustomerAccount = false;
+    $isInformationAdmin = true;
+    
     //Insert
     $isInsertProduct = false;
     $isInsertProductType = false;
     $isInsertCustomerAccount = false;
-    $isInsertStaff = false;
     $isInsertProvider = false;
     $isInsertBill = false;
     $isInsertBillDetail = false;
@@ -26,11 +26,10 @@
 
     //Edit
     $isEditProduct = false;
-    $isStaffAccount =  true;
+    $isAdminAccount =  false;
 
 
-
-
+    
     $isBill = false;
     $isBillDetail = false;
     $isProvider = false;
