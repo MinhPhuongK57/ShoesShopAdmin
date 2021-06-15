@@ -1,1 +1,1 @@
-<title>Insert6 Product Type</title>
+<title>Insert Product Type</title>

@@ -42,7 +42,7 @@
                             <td><?php echo $level.$arr__protype["producttypename"]?></td>
                             <td><?php echo ($level.$arr__protype["status"])?"Active":"Inactive"?></td>
                             <td><a href="<?php echo $level."insert__producttype.php"?>" class="btn btn-primary">Add</a></td>
-                            <td><a href="insert__producttype.php?id_producttype=<?php echo $level.$arr__protype["id_producttype"]?>" class="btn btn-success">Edit</a></td>
+                            <td><a href="edit__producttype.php?id_producttype=<?php echo $level.$arr__protype["id_producttype"]?>" class="btn btn-success">Edit</a></td>
                             <td><a href="product__type.php?id_producttype=<?php echo $level.$arr__protype["id_producttype"]?>" class="btn btn-danger">Delete</a></td> 
                         </tr>
                     <?php } ?>

@@ -24,6 +24,7 @@
 
     //Edit
     $isEditProduct = false;
+    $isEditProductType = false;
     $isAdminAccount =  false;
 
     

@@ -42,7 +42,7 @@
                 <label for="validationCustom05" class="form-label">Password</label>
                 <input type="text" min = "0" max="150"class="form-control" id="validationCustom05" name="password" value="<?php echo $list__admin["password"]?>" disabled>
             </div>
-            <div class="col-12 p-2">
+            <div class="col-12 p-2 m-3">
                 <button class="btn btn-primary" type="submit" value="Update" name="update" id="fun" onclick=click();>EDIT ACCOUNT</button>
             </div>
         </form>  

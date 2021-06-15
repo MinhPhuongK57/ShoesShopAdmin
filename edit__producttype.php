@@ -8,7 +8,7 @@
 ?>
 <?php
     $level ="";
-    $isIndex = true;
+    $isIndex = false;
     $isProduct = false;
     $isProductType=false;
     $isInfopage = false;
@@ -24,9 +24,8 @@
 
     //Edit
     $isEditProduct = false;
-    $isEditProductType = false;
+    $isEditProductType = true;
     $isAdminAccount =  false;
-
     
     $isBill = false;
     $isBillDetail = false;
@@ -34,4 +33,3 @@
     include $level."config.php";
     include $level."layout.php";
 ?>
-            

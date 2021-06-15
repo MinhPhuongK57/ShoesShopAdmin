@@ -11,8 +11,9 @@
     }
 ?>
 <?php
-    if(isset($_POST["update"]))
+    if(isset($_POST["idproduct"]))
     {
+        $id = $_POST["idproduct"];
         $productname= $_POST['productname'];
         $id_producttype = $_POST['idproducttype'];
         $id_provider = $_POST['idprovider'];
@@ -29,12 +30,11 @@
         
         /*-------------------Update product------------------*/
         
-        $sql__update = "UPDATE product SET productname = '$productname',id_producttype = '$id_producttype',id_provider= '$id_provider',
-        productimage = $image,total = $total , price = $price , color = '$color' , size = $size , description = '$description',status = $status
+        $sql__update = "UPDATE product SET id_product = $id ,productname = '$productname',id_producttype = '$id_producttype',id_provider= '$id_provider'
+        ,productimage = '$image',total = '$total', price = '$price' , color = '$color' , size = '$size' , description = '.$description.',status = '$status'
         WHERE id_product = $id_product";
         $list__update__product = $connect-> prepare($sql__update);
         $list__update__product -> execute();
-        $list__update_product_rowsdata = $list__update__product ->fetchAll();
     }
 ?>
 

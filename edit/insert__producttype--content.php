@@ -27,7 +27,7 @@
     </div>
     <div class="card-body">
         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-            <a href="<?php echo $level."product__type.php"?>" class="btn btn-primary" type="button">Back to product type</a>
+            <a href="product__type.php?<?php echo $admin_name?>" class="btn btn-primary" type="button">Back to product type</a>
         </div>
         <form action="" method="post" class="row g-3 needs-validation" enctype="multipart/form-data" validate>
             <div class="col-md-4 p-4">

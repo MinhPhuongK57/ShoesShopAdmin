@@ -67,6 +67,10 @@
     {
         include $level.tit__path.'title__edit__products.php'; 
     }
+    if($isEditProductType == true)
+    {
+        include $level.tit__path.'title__edit__producttype.php'; 
+    }
     if($isAdminAccount == true)
     {
         include $level.tit__path.'title__admin__account.php';
@@ -139,6 +143,10 @@
     if($isEditProduct == true)
     {
         include $level.edi__path.'edit__products--content.php';
+    }
+    if($isEditProductType == true)
+    {
+        include $level.edi__path.'edit__producttype--content.php';
     }
     if($isAdminAccount == true){
         include $level.edi__path.'edit__admin__account.php';

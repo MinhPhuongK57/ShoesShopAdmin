@@ -2,15 +2,15 @@
     $level = "";
     include $level."DB/database.php";
     $admin_name=isset($_COOKIE["admin_name"])?$_COOKIE["admin_name"]:"Administrator"; 
-    if(isset($_POST['admin_name']) )
+
+    if(isset($_POST['email']) )
     {
-        $admin= $_POST['admin_name'];
         $email= $_POST['email'];
         $phonenum = $_POST['phonenum'];
         $password = $_POST['password'];
         
         /*-------------------Insert product------------------*/
-        $sql__adminupdate = "UPDATE account__admin SET admin_name = '$admin', email = N'$email', phonenum = '$phonenum', password = '$password' WHERE admin_name = '$admin_name'";
+        $sql__adminupdate = "UPDATE account__admin SET email = N'$email', phonenum = '$phonenum', password = '$password' WHERE admin_name = '$admin_name'";
         $admin__account = $connect->prepare($sql__adminupdate);
         $admin__account -> execute();
     }
@@ -33,7 +33,7 @@
         <form action="" method="post" class="row g-3 needs-validation" enctype="multipart/form-data" validate>
             <div class="col-md-3 p-4">
                 <label for="validationCustom02" class="form-label">Admin Name</label>
-                <input type="text" class="form-control" id="validationCustom02" name="admin_name" value="" placeholder="Enter your email"  required>
+                <input type="text" class="form-control" id="validationCustom02" name="admin_name" value="<?php echo $admin_name?>" placeholder="Enter your email"  required disabled>
                 <div class="valid-feedback">
                     Looks good!
                 </div>
@@ -60,18 +60,7 @@
                     Looks good!
                 </div>
             </div>
-            <div class="col-12">
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
-                    <label class="form-check-label" for="invalidCheck">
-                        Agree to terms and conditions
-                    </label>
-                    <div class="invalid-feedback">
-                        You must agree before submitting.
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 p-2">
+            <div class="col-12 p-2 m-3">
                 <button class="btn btn-primary" type="submit" name="update" value = " update account" id="fun" onclick=click();>Update account</button>
             </div>
         </form> 
