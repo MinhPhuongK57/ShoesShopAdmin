@@ -2,9 +2,9 @@
     include $level."index__data.php";
 
     /*-------------------Delte product type------------------*/
-    if(isset($_GET["email"])){
-        $email = $_GET["email"];
-        $sql__delete = "DELETE FROM customer_account WHERE email = '$email'";
+    if(isset($_GET["id_card"])){
+        $id_card = $_GET["id_card"];
+        $sql__delete = "DELETE FROM customer_account WHERE id_card = '$id_card'";
         $customer_account__delete = $connect->prepare($sql__delete);
         $customer_account__delete -> execute();
     }
@@ -49,9 +49,9 @@
                             <td><?php echo $level.$arr__cusaccount["address"]?></td>
                             <td><?php echo $level.$arr__cusaccount["password"]?></td>
                             <td><?php echo ($level.$arr__cusaccount["status"])?"Active":"Inactive"?></td>
-                            <td><a href="<?php echo $level."insert__customeraccount"?>" class="btn btn-primary">Add</a></td>
-                            <td><a href="#" class="btn btn-success">Edit</a></td>
-                            <td><a href="customer__account.php?email=<?php echo $level.$arr__cusaccount["email"]?>" class="btn btn-danger">Delete</a></td>   
+                            <td><a href="<?php echo $level."insert__customeraccount.php"?>" class="btn btn-primary">Add</a></td>
+                            <td><a href="edit__cusaccount.php?id_card=<?php echo $level.$arr__cusaccount["id_card"]?>" class="btn btn-success">Edit</a></td>
+                            <td><a href="customer__account.php?id_card=<?php echo $level.$arr__cusaccount["id_card"]?>" class="btn btn-danger">Delete</a></td>   
                         </tr>
                     <?php } ?>
                 </tbody>

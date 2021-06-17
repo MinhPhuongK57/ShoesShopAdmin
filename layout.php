@@ -71,6 +71,22 @@
     {
         include $level.tit__path.'title__edit__producttype.php'; 
     }
+    if($isEditCustomerAccount == true)
+    {
+        include $level.tit__path.'title__edit__cusaccount.php'; 
+    }
+    if($isEditProvider == true)
+    {
+        include $level.tit__path.'title__edit__provider.php'; 
+    }
+    if($isBill == true)
+    {
+        include $level.tit__path.'title__edit__bill.php'; 
+    }
+    if($isEditBillDetail == true)
+    {
+        include $level.tit__path.'title__edit__billdetail.php'; 
+    }
     if($isAdminAccount == true)
     {
         include $level.tit__path.'title__admin__account.php';
@@ -148,10 +164,25 @@
     {
         include $level.edi__path.'edit__producttype--content.php';
     }
+    if($isEditCustomerAccount == true)
+    {
+        include $level.edi__path.'edit__cusaccount--content.php';
+    }
+    if($isEditProvider == true)
+    {
+        include $level.edi__path.'edit__provider--content.php'; 
+    }
+    if($isEditBill == true)
+    {
+        include $level.edi__path.'edit__bill--content.php'; 
+    }
+    if($isEditBillDetail == true)
+    {
+        include $level.edi__path.'edit__billdetail--content.php'; 
+    }
     if($isAdminAccount == true){
         include $level.edi__path.'edit__admin__account.php';
     }
-
     //Footer
     include $level.foo__path.'footer.php';
 ?>

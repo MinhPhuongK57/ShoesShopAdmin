@@ -14,6 +14,11 @@
     $isInfopage = true;
     $isCustomerAccount = false;
     $isInformationAdmin = false;
+    $isAdminAccount =  false;
+    $isBill = false;
+    $isBillDetail = false;
+    $isProvider = false;
+    
     //Insert
     $isInsertProduct = false;
     $isInsertProductType = false;
@@ -25,12 +30,10 @@
     //Edit
     $isEditProduct = false;
     $isEditProductType = false;
-    $isAdminAccount =  false;
-
-    
-    $isBill = false;
-    $isBillDetail = false;
-    $isProvider = false;
+    $isEditCustomerAccount = false;
+    $isEditProvider = false;
+    $isEditBill = false;
+    $isEditBillDetail = false;
     include $level."config.php";
     include $level."layout.php";
 ?>

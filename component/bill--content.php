@@ -45,8 +45,8 @@
                             <td><?php echo date("d-m-Y",strtotime( $level.$arr__bill["date"]))?></td>
                             <td><?php echo $level.$arr__bill["totalprice"]?></td>
                             <td><?php echo ($level.$arr__bill["status"])?"Active":"Inactive"?></td>
-                            <td><a href="<?php echo $level."insert__bill"?>" class="btn btn-primary">Add</a></td>
-                            <td><a href="#" class="btn btn-success">Edit</a></td>
+                            <td><a href="<?php echo $level."insert__bill.php"?>" class="btn btn-primary">Add</a></td>
+                            <td><a href="edit__bill.php?id_bill=<?php echo $level.$arr__bill["id_bill"]?>" class="btn btn-success">Edit</a></td>
                             <td><a href="bill.php?id_bill=<?php echo $level.$arr__bill["id_bill"]?>" class="btn btn-danger">Delete</a></td>   
                         </tr>
                     <?php } ?>

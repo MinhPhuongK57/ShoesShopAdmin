@@ -18,19 +18,21 @@
     $isBill = false;
     $isBillDetail = false;
     $isProvider = false;
+
     //Insert
     $isInsertProduct = false;
     $isInsertProductType = false;
     $isInsertCustomerAccount = false;
     $isInsertProvider = false;
     $isInsertBill = false;
-    $isInsertBillDetail = true;
+    $isInsertBillDetail = false;
 
-    //Update
+
+    //Edit
     $isEditProduct = false;
     $isEditProductType = false;
     $isEditCustomerAccount = false;
-    $isEditProvider = false;
+    $isEditProvider = true;
     $isEditBill = false;
     $isEditBillDetail = false;
     include $level."config.php";

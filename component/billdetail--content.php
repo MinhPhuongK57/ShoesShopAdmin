@@ -52,7 +52,7 @@
                             <td><?php echo $level.$arr__billdetail["total"]?></td>
                             <td><?php echo ($level.$arr__billdetail["status"])?"Active":"Inactive"?></td>
                             <td><a href="<?php echo $level."insert__billdetail" ?>" class="btn btn-primary">Add</a></td>
-                            <td><a href="#" class="btn btn-success">Edit</a></td>
+                            <td><a href="edit__billdetail.php?id_billdetail=<?php echo $level.$arr__billdetail["id_billdetail"]?>" class="btn btn-success">Edit</a></td>
                             <td><a href="billdetail.php?id_billdetail=<?php echo $level.$arr__billdetail["id_billdetail"]?>" class="btn btn-danger">Delete</a></td> 
                         </tr>
                     <?php } ?>

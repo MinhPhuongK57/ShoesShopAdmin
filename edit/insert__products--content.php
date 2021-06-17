@@ -104,7 +104,7 @@
                     <?php foreach ($list__product_color_rowsdata as $arr_product) 
                     {  
                     ?>
-                        <option value=""><?php echo $arr_product["color"]?></option>
+                        <option value="<?php echo $arr_product["color"]?>"><?php echo $arr_product["color"]?></option>
                     <?php
                     } 
                     ?>
@@ -135,17 +135,6 @@
                 <label for="validationCustom10" class="form-label">Product Image</label>
                 <input type="file" class="form-control" data-bs-toggle="collapse" name="image" data-bs-target="#collapseExample" aria-expanded="false" aria-label="file collapseExample example" placeholder="Choose your photo" required>
                 <div class="invalid-feedback">Example invalid form file feedback</div>
-            </div>
-            <div class="col-12">
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
-                    <label class="form-check-label" for="invalidCheck">
-                        Agree to terms and conditions
-                    </label>
-                    <div class="invalid-feedback">
-                        You must agree before submitting.
-                    </div>
-                </div>
             </div>
             <div class="col-12 p-2">
                 <button class="btn btn-primary" type="submit" id="fun" onclick=click();>Insert</button>

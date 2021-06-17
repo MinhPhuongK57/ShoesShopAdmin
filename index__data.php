@@ -44,3 +44,59 @@
     $list__provider-> execute();
     $list__provider_rowsdata = $list__provider->fetchAll();
 
+    //Edit product
+    if(isset($_GET["id_product"]))
+    {
+        $id_product = $_GET["id_product"];
+        $sql__select = "SELECT * from product where id_product = '$id_product'";
+        $list__product_select = $connect->prepare($sql__select);
+        $list__product_select -> execute();
+        $list__product_select_rowsdata = $list__product_select ->fetchAll();
+    }
+    
+    //Edit producttype
+    if(isset($_GET["id_producttype"]))
+    {
+        $id = $_GET["id_producttype"];
+        $sql__select__producttype = "SELECT * FROM producttype WHERE id_producttype = '$id'";
+        $list__producttype_select = $connect->prepare($sql__select__producttype);
+        $list__producttype_select -> execute();
+        $list__producttype_select_rowsdata = $list__producttype_select ->fetchAll();
+    }
+
+    //Edit customeraccount
+    if(isset($_GET["id_card"]))
+    {
+        $id_card = $_GET["id_card"];
+        $sql__select = "SELECT * from customer_account where id_card = '$id_card'";
+        $list__cusaccount_select = $connect->prepare($sql__select);
+        $list__cusaccount_select -> execute();
+        $list__cusaccount_select_rowsdata = $list__cusaccount_select ->fetchAll();
+    }
+    //Edit provider
+    if(isset($_GET["id_provider"]))
+    {
+        $id_provider = $_GET["id_provider"];
+        $sql__select = "SELECT * from provider where id_provider = '$id_provider'";
+        $list__provider_select = $connect->prepare($sql__select);
+        $list__provider_select -> execute();
+        $list__provider_select_rowsdata = $list__provider_select ->fetchAll();
+    }
+    //Edit bill
+    if(isset($_GET["id_bill"]))
+    {
+        $id_bill = $_GET["id_bill"];
+        $sql__select = "SELECT * from bill where id_bill = '$id_bill'";
+        $list__bill_select = $connect->prepare($sql__select);
+        $list__bill_select -> execute();
+        $list__bill_select_rowsdata = $list__bill_select ->fetchAll();
+    }
+    //Edit billdetail
+    if(isset($_GET["id_billdetail"]))
+    {
+        $id_billdetail = $_GET["id_billdetail"];
+        $sql__select = "SELECT * from bill_detail where id_billdetail = '$id_billdetail'";
+        $list__billdetail_select = $connect->prepare($sql__select);
+        $list__billdetail_select -> execute();
+        $list__billdetail_select_rowsdata = $list__billdetail_select ->fetchAll();
+    }
