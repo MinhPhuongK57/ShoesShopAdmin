@@ -20,29 +20,35 @@
     $list__product_type -> execute();
     $list__product_type_rowsdata = $list__product_type ->fetchAll();
 
-    //customer__account
+    //Customer__account
     $SQL_str_listcus_account= "SELECT * from customer_account";
     $list__cus_account= $connect->prepare($SQL_str_listcus_account);
     $list__cus_account-> execute();
     $list__cus_account_rowsdata = $list__cus_account ->fetchAll();
 
-    //bill
+    //Bill
     $SQL_str_listbill= "SELECT * from bill";
     $list__bill= $connect->prepare($SQL_str_listbill);
     $list__bill-> execute();
     $list__bill_rowsdata = $list__bill ->fetchAll();
 
-    //bill detail
+    //Bill detail
     $SQL_str_listbill_detail= "SELECT * from bill_detail";
     $list__bill_detail= $connect->prepare($SQL_str_listbill_detail);
     $list__bill_detail-> execute();
     $list__bill_detail_rowsdata = $list__bill_detail ->fetchAll();
     
-    //provider
+    //Provider
     $SQL_str_listprovider= "SELECT * from provider";
     $list__provider= $connect->prepare($SQL_str_listprovider);
     $list__provider-> execute();
     $list__provider_rowsdata = $list__provider->fetchAll();
+
+    //Feedback
+    $SQL_str_listfeedback= "SELECT * from feedback";
+    $list__feedback= $connect->prepare($SQL_str_listfeedback);
+    $list__feedback-> execute();
+    $list__feedback_rowsdata = $list__feedback->fetchAll();
 
     //Edit product
     if(isset($_GET["id_product"]))
@@ -100,3 +106,13 @@
         $list__billdetail_select -> execute();
         $list__billdetail_select_rowsdata = $list__billdetail_select ->fetchAll();
     }
+    //Edit feedback
+    if(isset($_GET["id_feedback"]))
+    {
+        $id_feedback = $_GET["id_feedback"];
+        $sql__select = "SELECT * from feedback where id_feedback = '$id_feedback'";
+        $list__feedback_select = $connect->prepare($sql__select);
+        $list__feedback_select -> execute();
+        $list__feedback_select_rowsdata = $list__feedback_select ->fetchAll();
+    }
+

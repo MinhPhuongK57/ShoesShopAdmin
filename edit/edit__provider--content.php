@@ -37,7 +37,7 @@
         <form action="" method="post" class="row g-3 needs-validation" enctype="multipart/form-data" validate>
             <div class="col-md-3 p-4">
                 <label for="username" class="form-label">Provider</label>
-                <input type="text" class="form-control" id="validationCustom01" name="id_provider" value="<?php echo $id?>" placeholder="Enter provider" autocomplete="off" required disabled>
+                <input type="text" class="form-control" id="validationCustom01" name="id_provider" value="<?php echo $id?>" placeholder="Enter provider" autocomplete="off" required readonly>
                 <div class="valid-feedback">
                     Looks good!
                 </div>
@@ -78,7 +78,7 @@
                     Looks good!
                 </div>
             </div>
-            <div class="col-12 p-2">
+            <div class="col-12 p-2 pl-4">
                 <button class="btn btn-primary" type="submit" id="fun" onclick=click();>Update</button>
             </div>
         </form> 

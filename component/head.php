@@ -16,13 +16,10 @@
         rel="stylesheet">
 
     <!-- Link icon-->
-    <link rel="shortcut icon" href="<?php echo $level.img__path."icon__shoesshop1.png" ?>" type="image/x-icon">
+    <link rel="shortcut icon" href="<?php echo $level.img__path."logo.jpg" ?>" type="image/x-icon">
 
     <!-- Custom styles for this template-->
     <link href="<?php echo $level.css__path."sb-admin-2.min.css" ?>" rel="stylesheet">
     <link href="<?php echo $level.css__path."sb-admin-2.css" ?>" rel="stylesheet">
 
-    <!-- Page level custom scripts -->
-    <script src="<?php echo $level.js__path."demo/chart-area-demo.js"?>"></script>
-    <script src="<?php echo $level.js__path."demo/chart-pie-demo.js"?>"></script>
-    <script src="<?php echo $level.js__path."demo/chart-bar-demo.js"?>"></script>
+

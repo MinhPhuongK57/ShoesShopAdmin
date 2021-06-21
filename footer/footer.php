@@ -1,3 +1,7 @@
+<?php
+    $level ="";
+    $admin_name=isset($_COOKIE["admin_name"])?$_COOKIE["admin_name"]:""; 
+?>
 <!-- Footer -->
 <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
@@ -33,7 +37,7 @@
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.php">Logout</a>
+                    <a class="btn btn-primary" href="<?php echo $level."login.php"?>">Logout</a>
                 </div>
             </div>
         </div>
@@ -47,14 +51,15 @@
     <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
     <!-- Custom scripts for all pages-->
-    <script src="js/sb-admin-2.min.js"></script>
+    <script src="<?php echo $level.js__path."sb-admin-2.min.js"?>"></script>
 
     <!-- Page level plugins -->
     <script src="vendor/chart.js/Chart.min.js"></script>
 
     <!-- Page level custom scripts -->
-    <script src="js/demo/chart-area-demo.js"></script>
-    <script src="js/demo/chart-pie-demo.js"></script>
+    <script src="<?php echo $level.js__path."demo/chart-area-demo.js"?>"></script>
+    <script src="<?php echo $level.js__path."demo/chart-pie-demo.js"?>"></script>
+    <script src="<?php echo $level.js__path."demo/chart-bar-demo.js"?>"></script>
 
     <!-- Page level plugins -->
     <script src="vendor/datatables/jquery.dataTables.min.js"></script>
@@ -62,7 +67,41 @@
 
     <!-- Page level custom scripts -->
     <script src="js/demo/datatables-demo.js"></script>
+    <script>
+        $('#dataTable').DataTable(
+            {
+                "lengthMenu": [ 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 60, 65, 70, 75, 80, 85, 90, 95, 100]
+            }
+        );
+    </script>
 
+
+
+
+    <!--Sweet Alert-->
+    <script src="<?php echo $level.js__path."sweetalert.min.js"?>"></script>
+    <!-- <script>
+        swal("Good job!", "You success to login!", "success");
+    </script> -->
+    <!-- <script>
+        function validation(){
+            var admin_name = $_SESSION['admin_name'];
+            var password = $_SESSION['password'];
+
+            var admin_Name = document.getElementById('admin_name').value;
+            var passWord = document.getElementById('password').value;
+            
+            if((admin_name == admin_Name) && (password == passWord))
+            {
+                swal("Good job!", "You success to login!", "success");
+                header("location:index.php");
+            }
+            else{
+                sweetalert("Oops...!", "Adminname and password was wrong!", "error");
+                header("location:login.php");
+            }
+        }
+    </script> -->
 </body>
 
 </html>

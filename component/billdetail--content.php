@@ -1,14 +1,3 @@
-<?php
-    include $level."index__data.php";
-
-    /*-------------------Delte ------------------*/
-    if(isset($_GET["id_billdetail"])){
-        $id_billdetail = $_GET["id_billdetail"];
-        $sql__delete = "DELETE FROM bill_detail WHERE id_billdetail = '$id_billdetail'";
-        $bill_detail__delete = $connect->prepare($sql__delete);
-        $bill_detail__delete -> execute();
-    }
-?>
 <!-- Begin Page Content -->
 <div class="container-fluid">
 
@@ -26,12 +15,12 @@
                 <thead>
                     <tr>
                         <th>Bill Detail</th>
-                        <th>Bill</th>
+                        <th>Bill Code</th>
                         <th>Product</th>
                         <th>Number</th>
                         <th>Price</th>
                         <th>Discount</th>
-                        <th>Total Price</th>
+                        <th>Total</th>
                         <th>Status</th>
                         <th style="border-right:none"></th>
                         <th style="border-left:none;border-right:none"></th>
@@ -44,16 +33,21 @@
                     ?>
                         <tr>
                             <td><?php echo $level.$arr__billdetail["id_billdetail"]?></td>
-                            <td><?php echo $level.$arr__billdetail["id_bill"]?></td>
+                            <td><?php echo $level.$arr__billdetail["bill_code"]?></td>
                             <td><?php echo $level.$arr__billdetail["id_product"]?></td>
                             <td><?php echo $level.$arr__billdetail["number"]?></td>
                             <td><?php echo $level.$arr__billdetail["price"]?></td>
                             <td><?php echo $level.$arr__billdetail["discount"]?></td>
                             <td><?php echo $level.$arr__billdetail["total"]?></td>
-                            <td><?php echo ($level.$arr__billdetail["status"])?"Active":"Inactive"?></td>
-                            <td><a href="<?php echo $level."insert__billdetail" ?>" class="btn btn-primary">Add</a></td>
+                            <td><?php if($arr__billdetail['status'] == 1):?>
+                                        <a href="setting__status.php?id_billdetail=<?php echo $arr__billdetail['id_billdetail']?>" class="btn btn-success"><i class="far fa-thumbs-up"></i></a>
+                                <?php else: ?>
+                                        <a href="setting__status.php?id_billdetail=<?php echo $arr__billdetail['id_billdetail']?>" class="btn btn-danger"><i class="far fa-thumbs-down"></i></a>
+                                <?php endif ?>
+                            </td>
+                            <td><a href="<?php echo $level."insert__billdetail.php" ?>" class="btn btn-primary">Add</a></td>
                             <td><a href="edit__billdetail.php?id_billdetail=<?php echo $level.$arr__billdetail["id_billdetail"]?>" class="btn btn-success">Edit</a></td>
-                            <td><a href="billdetail.php?id_billdetail=<?php echo $level.$arr__billdetail["id_billdetail"]?>" class="btn btn-danger">Delete</a></td> 
+                            <td><a href="delete__data.php?id_billdetail=<?php echo $level.$arr__billdetail["id_billdetail"]?>" class="btn btn-danger">Delete</a></td> 
                         </tr>
                     <?php } ?>
                 </tbody>

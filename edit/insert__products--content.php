@@ -3,9 +3,8 @@
     include $level."index__data.php";
 ?>
 <?php
-    if(isset($_POST['idproduct']) )
+    if(isset($_POST['productname']) )
     {
-        $id_product = $_POST['idproduct'];
         $productname= $_POST['productname'];
         $id_producttype = $_POST['idproducttype'];
         $id_provider = $_POST['idprovider'];
@@ -20,7 +19,8 @@
         $image_tmp = $_FILES['image']['tmp_name'];
         
         /*-------------------Insert product------------------*/
-        $sql__insert = "INSERT INTO product VALUES('$id_product','$productname','$id_producttype','$id_provider','$image',$total,$price,'$color',$size,'$description',$status)";
+        $sql__insert = "INSERT INTO product(productname,id_producttype,id_provider,productimage,total,price,color,size,description,status)
+        VALUES('$productname','$id_producttype','$id_provider','$image',$total,$price,'$color',$size,'$description',$status)";
         move_uploaded_file($image_tmp,'img/'.$image);
         $product__insert = $connect->prepare($sql__insert);
         $product__insert -> execute();
@@ -42,13 +42,6 @@
             <a href="<?php echo $level."product.php"?>" class="btn btn-primary" type="button">Back to product</a>
         </div>
         <form action="" method="post" class="row g-3 needs-validation" enctype="multipart/form-data" validate>
-            <div class="col-md-4 p-4">
-                <label for="validationCustom01" class="form-label">Product ID</label>
-                <input type="text" class="form-control" id="validationCustom01" name="idproduct" value="" placeholder="Enter Product ID" required>
-                <div class="valid-feedback">
-                    Looks good!
-                </div>
-            </div>
             <div class="col-md-4 p-4">
                 <label for="validationCustom02" class="form-label">Product Name</label>
                 <input type="text" class="form-control" id="validationCustom02" name="productname" value="" placeholder="Enter Product Name"  required>
@@ -136,7 +129,7 @@
                 <input type="file" class="form-control" data-bs-toggle="collapse" name="image" data-bs-target="#collapseExample" aria-expanded="false" aria-label="file collapseExample example" placeholder="Choose your photo" required>
                 <div class="invalid-feedback">Example invalid form file feedback</div>
             </div>
-            <div class="col-12 p-2">
+            <div class="col-12 p-2 pl-4">
                 <button class="btn btn-primary" type="submit" id="fun" onclick=click();>Insert</button>
             </div>
         </form>  

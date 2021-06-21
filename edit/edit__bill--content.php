@@ -2,15 +2,16 @@
     $level = "";
     include $level."index__data.php";
     $id = $_GET["id_bill"];
-    if(isset($_POST['id_customer']) )
+    if(isset($_POST['bill_code']) )
     {
+        $bill_code = $_POST['bill_code'];
         $date = $_POST['date'];
         $id_customer = $_POST['id_customer'];
         $totalprice = $_POST['totalprice'];
         $status = $_POST['status'];
         
         /*-------------------Insert product------------------*/
-        $sql__update__bill = "UPDATE bill SET date ='$date',id_customer = '$id_customer',totalprice = '$totalprice',status = '$status'
+        $sql__update__bill = "UPDATE bill SET bill_code = '$bill_code', date ='$date',id_customer = '$id_customer',totalprice = '$totalprice',status = '$status'
         WHERE id_bill = '$id'";
         $update__bill = $connect->prepare($sql__update__bill);
         $update__bill -> execute();
@@ -36,7 +37,14 @@
         <form action="" method="post" class="row g-3 needs-validation" enctype="multipart/form-data" validate>
             <div class="col-md-4 p-4">
                 <label for="username" class="form-label">Bill</label>
-                <input type="text" class="form-control" id="validationCustom01" name="id_bill" value="<?php echo $id?>" placeholder="Enter bill" autocomplete="off" required disabled>
+                <input type="text" class="form-control" id="validationCustom01" name="id_bill" value="<?php echo $id?>" placeholder="Enter bill" autocomplete="off" required readonly>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+            <div class="col-md-4 p-4">
+                <label for="username" class="form-label">Bill Code</label>
+                <input type="text" class="form-control" id="validationCustom02" name="bill_code" value="<?php echo $row['bill_code']?>" placeholder="Enter bill" autocomplete="off" required>
                 <div class="valid-feedback">
                     Looks good!
                 </div>
@@ -49,7 +57,7 @@
                     Looks good!
                 </div>
             </div>
-            <div class="col-md-3 p-4">
+            <div class="col-md-4 p-4">
                 <label for="validationCustom02" class="form-label" data-provide="datepicker" data-date-format="dd/mm/yyyy">Date</label>
                 <input type="date" class="form-control" id="validationCustom02" name="date" value="<?php echo $row['date']?>" placeholder="Enter date"  autocomplete="off" required>
                 <div class="valid-feedback">
@@ -70,7 +78,7 @@
                     Looks good!
                 </div>
             </div>
-            <div class="col-12 p-2">
+            <div class="col-12 p-2 pl-4">
                 <button class="btn btn-primary" type="submit" id="fun" onclick=click();>Update</button>
             </div>
         </form>  

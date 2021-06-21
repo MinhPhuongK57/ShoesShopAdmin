@@ -1,14 +1,3 @@
-<?php
-    include $level."index__data.php";
-
-    /*-------------------Delte staff------------------*/
-    if(isset($_GET["id_provider"])){
-        $id_provider= $_GET["id_provider"];
-        $sql__delete = "DELETE FROM provider WHERE id_provider = '$id_provider'";
-        $provider__delete = $connect->prepare($sql__delete);
-        $provider__delete -> execute();
-    }
-?>
 <!-- Begin Page Content -->
 <div class="container-fluid">
 
@@ -46,10 +35,15 @@
                             <td><?php echo $level.$arr__provider["id_card"]?></td>
                             <td><?php echo $level.$arr__provider["email"]?></td>
                             <td><?php echo $level.$arr__provider["address"]?></td>
-                            <td><?php echo ($level.$arr__provider["status"])?"Active":"Inactive"?></td>
+                            <td><?php if($arr__provider['status'] == 1):?>
+                                        <a href="setting__status.php?id_provider=<?php echo $arr__provider['id_provider']?>" class="btn btn-success"><i class="far fa-thumbs-up"></i></a>
+                                <?php else: ?>
+                                        <a href="setting__status.php?id_provider=<?php echo $arr__provider['id_provider']?>" class="btn btn-danger"><i class="far fa-thumbs-down"></i></a>
+                                <?php endif ?>
+                            </td>
                             <td><a href="<?php echo $level."insert__provider"?>" class="btn btn-primary">Add</a></td>
                             <td><a href="edit__provider.php?id_provider=<?php echo $level.$arr__provider["id_provider"]?>" class="btn btn-success">Edit</a></td>
-                            <td><a href="provider.php?id_provider=<?php echo $level.$arr__provider["id_provider"]?>" class="btn btn-danger">Delete</a></td>   
+                            <td><a href="delete__data.php?id_provider=<?php echo $level.$arr__provider["id_provider"]?>" class="btn btn-danger">Delete</a></td>   
                         </tr>
                     <?php } ?>
                 </tbody>

@@ -1,14 +1,3 @@
-<?php
-    include $level."index__data.php";
-
-    /*-------------------Delte ------------------*/
-    if(isset($_GET["id_bill"])){
-        $id_bill= $_GET["id_bill"];
-        $sql__delete = "DELETE FROM bill WHERE id_bill = '$id_bill'";
-        $bill__delete = $connect->prepare($sql__delete);
-        $bill__delete -> execute();
-    }
-?>
 <!-- Begin Page Content -->
 <div class="container-fluid">
 
@@ -26,8 +15,9 @@
                 <thead>
                     <tr>
                         <th>Bill</th>
-                        <th>Customer</th>
+                        <th>Bill Code</th>
                         <th>Date</th>
+                        <th>id_customer</th>
                         <th>Total Price</th>
                         <th>Status</th>
                         <th style="border-right:none"></th>
@@ -41,13 +31,19 @@
                     ?>
                         <tr>
                             <td><?php echo $level.$arr__bill["id_bill"]?></td>
-                            <td><?php echo $level.$arr__bill["id_customer"]?></td>
+                            <td><?php echo $level.$arr__bill["bill_code"]?></td>
                             <td><?php echo date("d-m-Y",strtotime( $level.$arr__bill["date"]))?></td>
+                            <td><?php echo $level.$arr__bill["id_customer"]?></td>
                             <td><?php echo $level.$arr__bill["totalprice"]?></td>
-                            <td><?php echo ($level.$arr__bill["status"])?"Active":"Inactive"?></td>
+                            <td><?php if($arr__bill['status'] == 1):?>
+                                        <a href="setting__status.php?id_bill=<?php echo $arr__bill['id_bill']?>" class="btn btn-success"><i class="far fa-thumbs-up"></i></a>
+                                <?php else: ?>
+                                        <a href="setting__status.php?id_bill=<?php echo $arr__bill['id_bill']?>" class="btn btn-danger"><i class="far fa-thumbs-down"></i></a>
+                                <?php endif ?>
+                            </td>
                             <td><a href="<?php echo $level."insert__bill.php"?>" class="btn btn-primary">Add</a></td>
                             <td><a href="edit__bill.php?id_bill=<?php echo $level.$arr__bill["id_bill"]?>" class="btn btn-success">Edit</a></td>
-                            <td><a href="bill.php?id_bill=<?php echo $level.$arr__bill["id_bill"]?>" class="btn btn-danger">Delete</a></td>   
+                            <td><a href="delete__data.php?id_bill=<?php echo $level.$arr__bill["id_bill"]?>" class="btn btn-danger">Delete</a></td>   
                         </tr>
                     <?php } ?>
                 </tbody>

@@ -16,7 +16,7 @@
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">ShoesShop<sup>2</sup></div>
+                <div class="sidebar-brand-text mx-3">ShoesShop<sup>ADMIN</sup></div>
             </a>
 
             <!-- Divider -->
@@ -53,6 +53,7 @@
                         <a class="collapse-item" href="provider.php?<?php echo $admin_name?>">Provider</a>
                         <a class="collapse-item" href="bill.php?<?php echo $admin_name?>">Bill</a>
                         <a class="collapse-item" href="billdetail.php?<?php echo $admin_name?>">Bill Detail</a>
+                        <a class="collapse-item" href="feedback.php?<?php echo $admin_name?>">Feedback</a>
                     </div>
                 </div>
             </li>

@@ -1,19 +1,19 @@
 <?php
     $level = "";
     include $level."index__data.php";
-    if(isset($_POST['id_billdetail']) )
+    if(isset($_POST['bill_code']) )
     {
-        $id_billdetail = $_POST['id_billdetail'];
-        $id_bill = $_POST['id_bill'];
+        $bill_code = $_POST['bill_code'];
         $id_product = $_POST['id_product'];
         $number = $_POST['number'];
         $price = $_POST['price'];
         $discount = $_POST['discount'];
-        $totalprice = $_POST['totalprice'];
+        $total = $_POST['total'];
         $status = $_POST['status'];
         
         /*-------------------Insert product------------------*/
-        $sql__insert__billdetail = "INSERT INTO bill_detail VALUES('$id_billdetail','$id_bill','$id_product',$number,$price,$discount,$totalprice,$status)";
+        $sql__insert__billdetail = "INSERT INTO bill_detail(bill_code,id_product,number,price,discount,total,status)
+        VALUES('$bill_code','$id_product',$number,$price,$discount,$total,$status)";
         $product__insert__billdetail = $connect->prepare($sql__insert__billdetail);
         $product__insert__billdetail -> execute();
     }
@@ -34,21 +34,21 @@
             <a href="<?php echo $level."billdetail.php"?>" class="btn btn-primary" type="button">Back to billdetail</a>
         </div>
         <form action="" method="post" class="row g-3 needs-validation" enctype="multipart/form-data" validate>
-            <div class="col-md-3 p-4">
+            <!-- <div class="col-md-3 p-4">
                 <label for="username" class="form-label">Bill Detail</label>
                 <input type="text" class="form-control" id="validationCustom01" name="id_billdetail" value="" placeholder="Enter bill detail" autocomplete="off" required>
                 <div class="valid-feedback">
                     Looks good!
                 </div>
-            </div>
+            </div> -->
             <div class="col-md-3 p-4">
-                <label for="username" class="form-label">Bill</label>
-                <select class="form-control" id="validationCustom03" name="id_bill" value="" required>
+                <label for="username" class="form-label">Bill code</label>
+                <select class="form-control" id="validationCustom03" name="bill_code" value="" required>
                         <option value="">Choose Bill</option>
                     <?php foreach ($list__bill_rowsdata as $arr_bill) 
                     {  
                     ?>
-                        <option value="<?php echo $arr_bill["id_bill"]?>"><?php echo $arr_bill["id_bill"]?></option>
+                        <option value="<?php echo $arr_bill["bill_code"]?>"><?php echo $arr_bill["id_bill"]?></option>
                     <?php
                     } 
                     ?>
@@ -92,7 +92,7 @@
             </div>
             <div class="col-md-3 p-4">
                 <label for="validationCustom06" class="form-label">Total</label>
-                <input type="text" class="form-control" id="validationCustom06" name="totalprice" value="" placeholder="Enter total price" autocomplete="off" required>
+                <input type="text" class="form-control" id="validationCustom06" name="total" value="" placeholder="Enter total price" autocomplete="off" required>
                 <div class="valid-feedback">
                     Looks good!
                 </div>
@@ -104,7 +104,7 @@
                     Looks good!
                 </div>
             </div>
-            <div class="col-12 p-2">
+            <div class="col-12 p-2 pl-4">
                 <button class="btn btn-primary" type="submit" id="fun" onclick=click();>Insert</button>
             </div>
         </form>  

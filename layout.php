@@ -34,6 +34,10 @@
     {
         include $level.tit__path.'title__provider.php';
     }
+    if($isFeedback == true)
+    {
+        include $level.tit__path.'title__feedback.php';
+    }
     if($isInsertProvider == true)
     {
         include $level.tit__path.'title__insert__provider.php';
@@ -91,6 +95,10 @@
     {
         include $level.tit__path.'title__admin__account.php';
     }
+    if($isEditFeedback == true)
+    {
+        include $level.tit__path.'title__edit__feedback.php';
+    }
     //Sidebar
     include $level.com__path.'sidebar.php';
     //Wrapper
@@ -126,6 +134,10 @@
     if($isProvider == true)
     {
         include $level.com__path.'provider--content.php';
+    }
+    if($isFeedback == true)
+    {
+        include $level.com__path.'feedback--content.php';
     }
     if($isInformationAdmin == true)
     {
@@ -182,6 +194,10 @@
     }
     if($isAdminAccount == true){
         include $level.edi__path.'edit__admin__account.php';
+    }
+    if($isEditFeedback == true)
+    {
+        include $level.edi__path.'edit__feedback--content.php';
     }
     //Footer
     include $level.foo__path.'footer.php';

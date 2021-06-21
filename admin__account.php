@@ -18,6 +18,7 @@
     $isBill = false;
     $isBillDetail = false;
     $isProvider = false;
+    $isFeedback = false;
 
 
     //Insert
@@ -36,6 +37,7 @@
     $isEditProvider = false;
     $isEditBill = false;
     $isEditBillDetail = false;
+    $isEditFeedback = false;
 
 
     include $level."config.php";

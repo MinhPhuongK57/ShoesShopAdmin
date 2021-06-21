@@ -1,14 +1,3 @@
-<?php
-    include $level."index__data.php";
-
-    /*-------------------Delte product type------------------*/
-    if(isset($_GET["id_card"])){
-        $id_card = $_GET["id_card"];
-        $sql__delete = "DELETE FROM customer_account WHERE id_card = '$id_card'";
-        $customer_account__delete = $connect->prepare($sql__delete);
-        $customer_account__delete -> execute();
-    }
-?>
 <!-- Begin Page Content -->
 <div class="container-fluid">
 
@@ -48,10 +37,15 @@
                             <td><?php echo $level.$arr__cusaccount["email"]?></td>
                             <td><?php echo $level.$arr__cusaccount["address"]?></td>
                             <td><?php echo $level.$arr__cusaccount["password"]?></td>
-                            <td><?php echo ($level.$arr__cusaccount["status"])?"Active":"Inactive"?></td>
+                            <td><?php if($arr__cusaccount['status'] == 1):?>
+                                        <a href="setting__status.php?id_card=<?php echo $arr__cusaccount['id_card']?>" class="btn btn-success"><i class="far fa-thumbs-up"></i></a>
+                                <?php else: ?>
+                                        <a href="setting__status.php?id_card=<?php echo $arr__cusaccount['id_card']?>" class="btn btn-danger"><i class="far fa-thumbs-down"></i></a>
+                                <?php endif ?>
+                            </td>
                             <td><a href="<?php echo $level."insert__customeraccount.php"?>" class="btn btn-primary">Add</a></td>
                             <td><a href="edit__cusaccount.php?id_card=<?php echo $level.$arr__cusaccount["id_card"]?>" class="btn btn-success">Edit</a></td>
-                            <td><a href="customer__account.php?id_card=<?php echo $level.$arr__cusaccount["id_card"]?>" class="btn btn-danger">Delete</a></td>   
+                            <td><a href="delete__data.php?id_card=<?php echo $level.$arr__cusaccount["id_card"]?>" class="btn btn-danger">Delete</a></td>   
                         </tr>
                     <?php } ?>
                 </tbody>

@@ -36,7 +36,7 @@
         <form action="" method="post" class="row g-3 needs-validation" enctype="multipart/form-data" validate>
             <div class="col-md-4 p-4">
                 <label for="validationCustom01" class="form-label">Product Type</label>
-                <input type="text" class="form-control" id="validationCustom01" name="idproducttype" value="<?php echo $row["id_producttype"]?>" placeholder="Enter Product ID" required disabled>
+                <input type="text" class="form-control" id="validationCustom01" name="idproducttype" value="<?php echo $row["id_producttype"]?>" placeholder="Enter Product ID" required readonly>
                 <div class="valid-feedback">
                     Looks good!
                 </div>
@@ -55,7 +55,7 @@
                     Looks good!
                 </div>
             </div>
-            <div class="col-12 p-2">
+            <div class="col-12 p-2 pl-4">
                 <button class="btn btn-primary" type="submit" id="fun" onclick=click();>Update</button>
             </div>
         </form>  

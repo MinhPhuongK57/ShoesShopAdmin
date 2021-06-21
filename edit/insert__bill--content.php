@@ -1,16 +1,17 @@
 <?php
     $level = "";
     include $level."index__data.php";
-    if(isset($_POST['id_bill']) )
+    if(isset($_POST['bill_code']) )
     {
-        $id_bill = $_POST['id_bill'];
+        $bill_code = $_POST['bill_code'];
         $date = $_POST['date'];
         $id_customer = $_POST['id_customer'];
         $totalprice = $_POST['totalprice'];
         $status = $_POST['status'];
         
         /*-------------------Insert product------------------*/
-        $sql__insert__bill = "INSERT INTO bill VALUES('$id_bill','$date','$id_customer','$totalprice',$status)";
+        $sql__insert__bill = "INSERT INTO bill(bill_code,date, id_customer, totalprice, status) 
+        VALUES('$bill_code','$date','$id_customer','$totalprice',$status)";
         $product__insert__bill = $connect->prepare($sql__insert__bill);
         $product__insert__bill -> execute();
     }
@@ -31,9 +32,16 @@
             <a href="<?php echo $level."bill.php"?>" class="btn btn-primary" type="button">Back to bill</a>
         </div>
         <form action="" method="post" class="row g-3 needs-validation" enctype="multipart/form-data" validate>
-            <div class="col-md-4 p-4">
+            <!-- <div class="col-md-4 p-4">
                 <label for="username" class="form-label">Bill</label>
                 <input type="text" class="form-control" id="validationCustom01" name="id_bill" value="" placeholder="Enter bill" autocomplete="off" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div> -->
+            <div class="col-md-4 p-4">
+                <label for="username" class="form-label">Bill Code</label>
+                <input type="text" class="form-control" id="validationCustom01" name="bill_code" value="" placeholder="Enter bill code" autocomplete="off" required>
                 <div class="valid-feedback">
                     Looks good!
                 </div>
@@ -67,7 +75,7 @@
                     Looks good!
                 </div>
             </div>
-            <div class="col-12 p-2">
+            <div class="col-12 p-2 pl-4">
                 <button class="btn btn-primary" type="submit" id="fun" onclick=click();>Insert</button>
             </div>
         </form>  

@@ -53,7 +53,7 @@
             </div>
             <div class="col-md-3 p-4">
                 <label for="validationCustom02" class="form-label">ID Card</label>
-                <input type="text" class="form-control" id="validationCustom02" name="id_card" value="<?php echo $row['id_card']?>" placeholder="Enter your ID card" autocomplete="off" required disabled>
+                <input type="text" class="form-control" id="validationCustom02" name="id_card" value="<?php echo $row['id_card']?>" placeholder="Enter your ID card" autocomplete="off" required readonly>
                 <div class="valid-feedback">
                     Looks good!
                 </div>
@@ -87,7 +87,7 @@
                     Looks good!
                 </div>
             </div>
-            <div class="col-12 p-2">
+            <div class="col-12 p-2 pl-4">
                 <button class="btn btn-primary" type="submit" id="fun" onclick=click();>Update</button>
             </div>
         </form>  

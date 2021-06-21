@@ -1,12 +1,13 @@
 <?php
     include $level."index__data.php";
     
-    $id_product = $_GET["id_product"];
+    $id = $_GET["id_product"];
+
     if(isset($_POST["productname"]))
     {
         $productname= $_POST['productname'];
-        $id_producttype = $_POST['idproducttype'];
-        $id_provider = $_POST['idprovider'];
+        $id_producttype = $_POST['id_producttype'];
+        $id_provider = $_POST['id_provider'];
         $total = $_POST['total'];
         $price = $_POST['price'];
         $color = $_POST['color'];
@@ -20,9 +21,9 @@
         
         /*-------------------Update product------------------*/
         
-        $sql__update = "UPDATE product SET productname = '$productname',id_producttype = '$id_producttype',id_provider= '$id_provider'
-        ,productimage = '$image',total = '$total', price = '$price' , color = '$color' , size = '$size' , description = '$description',status = '$status'
-        WHERE id_product = '$id_product'";
+        $sql__update = "UPDATE product SET productname = '$productname',id_producttype = '$id_producttype',id_provider= '$id_provider',
+        productimage = '$image',total = '$total', price = '$price' , color = '$color' , size = '$size' , description = N'$description',status = '$status'
+        WHERE id_product = '$id'";
         $list__update__product = $connect->prepare($sql__update);
         $list__update__product ->execute();
         header("location:product.php");
@@ -48,14 +49,13 @@
             <form action="" method="post" class="row g-3 needs-validation" enctype="multipart/form-data" validate>
             <div class="col-md-4 p-4">
                 <label for="validationCustom01" class="form-label">Product ID</label>
-                <input type="text" class="form-control" id="validationCustom01" name="idproduct" value="<?php echo $list__select['id_product'];?>" placeholder="Enter Product ID" readonly>
+                <input type="text" class="form-control" id="validationCustom01" name="idproduct" value="<?php echo $id?>" placeholder="Enter Product ID" readonly>
                 <div class="valid-feedback">
                     Looks good!
                 </div>
             </div>
             <div class="col-md-4 p-4">
                 <label for="validationCustom02" class="form-label">Product Name</label>
-                <input type="hidden" class="form-control" id="id" name="id" value="<?php echo $id_product?>">
                 <input type="text" class="form-control" id="validationCustom02" name="productname" value="<?php echo $list__select['productname']?>" placeholder="Enter Product Name"  required>
                 <div class="valid-feedback">
                     Looks good!
@@ -63,7 +63,7 @@
             </div>
             <div class="col-md-4 p-4">
                 <label for="validationCustom03" class="form-select">Product Type</label>
-                <select class="form-control" id="validationCustom03" name="idproducttype" value="<?php echo $list__select['id_producttype']?>" required>
+                <select class="form-control" id="validationCustom03" name="id_producttype" value="" required>
                     <?php foreach ($list__product_type_rowsdata as $arr_producttype) 
                     {  
                     ?>
@@ -75,7 +75,7 @@
             </div>
             <div class="col-md-4 p-4">
                 <label for="validationCustom04" class="form-label">Provider</label>
-                <select class="form-control" id="validationCustom04" name="idprovider" value="<?php echo $list__select['id_provider']?>" required>
+                <select class="form-control" id="validationCustom04" name="id_provider" value="" required>
                     <?php foreach ($list__provider_rowsdata as $arr_provider) 
                     {  
                     ?>
@@ -102,7 +102,7 @@
             </div>
             <div class="col-md-4 p-4">
                 <label for="validationCustom07" class="form-label">Color</label>
-                <select class="form-control" id="validationCustom04" name="color" value="<?php echo $list__select['color']?>" required>
+                <select class="form-control" id="validationCustom04" name="color" value="" required>
                     <?php foreach ($list__product_color_rowsdata as $arr_product) 
                     {  
                     ?>
@@ -135,11 +135,11 @@
             </div>
             <div class="mb-3 p-4">
                 <label for="validationCustom10" class="form-label">Product Image</label>
-                <div class="col-md-4" style="width:240px;height:150px;"><img src="<?php echo $level.img__path.$list__select['productimage']?>" alt="Old picture"></div>
+                <div class="col-md-4"><img src="<?php echo $level.img__path.$list__select['productimage']?>" alt="Old picture" style="background-size:cover;oject-fit:center;width:200px; height:200px;"></div>
                 <input type="file" class="form-control" data-bs-toggle="collapse" name="image" value="<?php echo $list__select['productimage']?>" data-bs-target="#collapseExample" aria-expanded="false" aria-label="file collapseExample example">
                 <div class="invalid-feedback">Example invalid form file feedback</div>
             </div>
-            <div class="col-12 p-2">
+            <div class="col-12 p-2 pl-4">
                 <button class="btn btn-primary" type="submit" value="Update" name="update" id="fun" onclick=click();>Update</button>
             </div>
         </form>  

@@ -6,7 +6,6 @@
 
     if(isset($_POST['login']))
     {
-        
         $admin_name = $_POST['admin_name'];
         $password = $_POST['password'];
 
@@ -29,11 +28,14 @@
         
         if(count($list__admin_name_rowsdata))
         {
-            $_SESSION["login"] = $list__admin_name_rowsdata;
+            $_SESSION['login'] = $list__admin_name_rowsdata;
             header("location:index.php");
         }
+        else{
+            setcookie("admin_name",$admin_name,time() - (3600 * 3), "/"); 
+            setcookie("password",$password,time() - (3600 * 3), "/");
+        }
     }
-    
     //COOKIE
     $admin_name = "";
     $password= "";
@@ -68,11 +70,11 @@
                                     <div class="form-group">
                                         <input type="text" class="form-control form-control-user"
                                             id="exampleInputEmail" aria-describedby="emailHelp"
-                                            placeholder="Enter Admin Name..." name="admin_name"  value="<?php echo $admin_name?>"  required>
+                                            placeholder="Enter Admin Name..." id="admin_name" name="admin_name"  value="<?php echo $admin_name?>"  required>
                                     </div>
                                     <div class="form-group">
                                         <input type="password" class="form-control form-control-user"
-                                            id="exampleInputPassword" placeholder="Password" name="password" value="<?php echo $password?>" autocomplete="off" required>
+                                            id="exampleInputPassword" placeholder="Password" id="password" name="password" value="<?php echo $password?>" autocomplete="off" required>
                                     </div>
                                     <div class="form-group">
                                         <div class="custom-control custom-checkbox small">
@@ -81,7 +83,7 @@
                                         </div>
                                     </div>
                                     <hr>
-                                    <button type = "submit" name="login" class="btn btn-primary btn-user btn-block">
+                                    <button type = "submit" name="login" id="login" class="btn btn-primary btn-user btn-block" onclick="validation();">
                                         Login
                                     </button>
                                     <hr>
@@ -103,9 +105,6 @@
                     </div>
                 </div>
             </div>
-
         </div>
-
     </div>
-
-</div>
+</div> 

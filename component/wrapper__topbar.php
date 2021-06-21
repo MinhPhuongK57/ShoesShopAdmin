@@ -1,6 +1,34 @@
         <?php 
             $admin_name = isset($_COOKIE["admin_name"])?$_COOKIE["admin_name"]:"Administrator"; 
         ?>
+        <?php
+            $level = "";
+            include $level."index__data.php";
+            include $level."search__data.php";
+            //COUNT FEEDBACK
+            
+            $sql__totalfeedback = $connect ->query("select count(id_feedback) from feedback where status = '0'")->fetchColumn(); 
+        ?>
+        <?php 
+            $SQL= "SELECT * from feedback where status = '0'";
+            $list__feedback= $connect->prepare($SQL);
+            $list__feedback-> execute();
+            $list__feedback_show = $list__feedback->fetchAll();
+        ?>
+
+        <?php 
+            //Show
+            // if(isset($_GET["id_product"]))
+            // {
+            //     $id_product = $_GET["id_product"];
+            //     $sql__select = "SELECT username from customer__account,feedback where feedback.id_product = custome'$id_product'";
+            //     $list__feedback_name = $connect->prepare($sql__select);
+            //     $list__feedback_name -> execute();
+            //     $list__feedback_name_rowsdata = $list__feedback_name ->fetchAll();
+            //     var_dump($list__feedback_name_rowsdata);
+            //     die();
+            // }
+        ?>
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
 
@@ -16,21 +44,22 @@
                     </button>
 
                     <!-- Topbar Search -->
-                    <form
-                        class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                    <!-- <form action="product.php" method="post" class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" 
+                    enctype="multipart/form-data">
                         <div class="input-group">
-                            <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
-                                aria-label="Search" aria-describedby="basic-addon2">
+                            <input type="text" class="form-control bg-light border-0 small" name="search__data" placeholder="Search for..."
+                                aria-label="Search" aria-describedby="basic-addon2" value="">
                             <div class="input-group-append">
-                                <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#exampleModal">
+                                <button class="btn btn-primary" type="submit" name="submit" data-toggle="modal" data-target="#exampleModal">
                                     <i class="fas fa-search fa-sm"></i>
                                 </button>
                             </div>
                         </div>
-                    </form>
+                    </form> -->
 
 
                     <!-- Modal -->
+                    <!-- Popup-->
                     <!-- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
@@ -137,7 +166,11 @@
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-envelope fa-fw"></i>
                                 <!-- Counter - Messages -->
-                                <span class="badge badge-danger badge-counter">4</span>
+                                <span class="badge badge-danger badge-counter">
+                                    <?php
+                                        echo $sql__totalfeedback; 
+                                    ?>
+                                </span>
                             </a>
                             <!-- Dropdown - Messages -->
                             <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -145,40 +178,25 @@
                                 <h6 class="dropdown-header">
                                     Message Center
                                 </h6>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="<?php echo $level.img__path."undraw_profile_1.svg"?>"
-                                            alt="...">
-                                        <div class="status-indicator bg-success"></div>
-                                    </div>
-                                    <div class="font-weight-bold">
-                                        <div class="text-truncate">Hello!!! I'm Minh Phuong . </div>
-                                        <div class="small text-gray-500">MinhPhuong123 · 58m</div>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="<?php echo $level.img__path."undraw_profile_2.svg"?>"
-                                            alt="...">
-                                        <div class="status-indicator"></div>
-                                    </div>
-                                    <div>
-                                        <div class="text-truncate">Hi!!! I'm Phan Trong Duc . </div>
-                                        <div class="small text-gray-500">TrongDuc456 · 1d</div>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="<?php echo $level.img__path."undraw_profile_3.svg"?>"
-                                            alt="...">
-                                        <div class="status-indicator bg-warning"></div>
-                                    </div>
-                                    <div>
-                                        <div class="text-truncate">Hi!! I'm Tong Thanh Tai . </div>
-                                        <div class="small text-gray-500">ThanhTai789 · 2d</div>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
+                                <div style="height:235px;overflow-y:auto">
+                                <?php foreach ($list__feedback_show as $select) {?>
+                                    <a class="dropdown-item d-flex align-items-center" href="edit__feedback.php?id_feedback=<?php echo $select['id_feedback']?>">
+                                            <div class="dropdown-list-image mr-3">
+                                                <img class="rounded-circle" src="<?php echo $level.img__path."undraw_profile_2.svg"?>"
+                                                    alt="...">
+                                                <div class="status-indicator bg-success"></div>
+                                            </div>
+                                            <div class="font-weight-bold">
+                                                <div class="text-truncate"><?php echo $level.$select['description']?></div>
+                                                <div class="small text-gray-500">
+                                                    <?php echo $level.$select['email']?>
+                                                    <em class="ml-4"><?php echo $level.$select['date']?></em>
+                                                </div>
+                                            </div>
+                                    </a>
+                                <?php }?>
+                                </div>
+                                <!-- <a class="dropdown-item d-flex align-items-center" href="#">
                                     <div class="dropdown-list-image mr-3">
                                         <img class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60"
                                             alt="...">
@@ -189,8 +207,8 @@
                                             told me that people say this to all dogs, even if they aren't good...</div>
                                         <div class="small text-gray-500">Chicken the Dog · 2w</div>
                                     </div>
-                                </a>
-                                <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
+                                </a> -->
+                                <a class="dropdown-item text-center small text-gray-500" href="<?php echo $level."feedback.php"?>">See detailed comments</a>
                             </div>
                         </li>
 
@@ -224,7 +242,7 @@
                                     Activity Log
                                 </a> -->
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="index.php?<?php echo $level."logout.php"?>" data-toggle="modal" data-target="#logoutModal" >
+                                <a class="dropdown-item" href="<?php echo $level."logout.php"?>" data-toggle="modal" data-target="#logoutModal" >
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Logout
                                 </a>
