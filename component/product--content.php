@@ -81,6 +81,33 @@
                             <td><a href="<?php echo $level."insert__products.php"?>" class="btn btn-primary">Add</a></td>
                             <td><a href="edit__products.php?id_product=<?php echo $level.$arr__product["id_product"]?>" class="btn btn-success">Edit</a></td>
                             <td><a href="delete__data.php?id_product=<?php echo $level.$arr__product["id_product"]?>" class="btn btn-danger">Delete</a></td>  
+                            
+                            
+                            <!-- <td><a href="product.php?id_product=<?php echo $level.$arr__product["id_product"]?>" data-toggle="modal" data-target="#exampleModal" class="btn btn-danger">Delete</a></td> -->
+                            <!-- Modal -->
+                            <!-- Popup-->
+                            <!-- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Delete product <code><?php echo $level.$arr__product["productname"]?></code></h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        Are you sure to delete product -> <em class="h4"><code><?php echo $level.$arr__product["productname"]?></code>
+                                        </em> <strong>#<?php echo $level.$arr__product["id_product"]?></strong>
+                                        <p style="text-align:center;"><img src="<?php echo $level.img__path.$arr__product["productimage"]?>" alt="No photo" style="width:150px;"></p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
+                                        <a href="delete__data.php?id_product=<?php echo $level.$arr__product["id_product"]?>" class="btn btn-danger" name="delete">Delete</a>
+                                    </div>
+                                    </div>
+                                </div>
+                            </div> -->
+                            <!-- Modal -->
                         </tr>
                     <?php }?>
                 </tbody>

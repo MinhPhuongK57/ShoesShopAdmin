@@ -2,11 +2,13 @@
     $level = "";
     include $level."DB/database.php";
     //COUNT
+    $sql__total_products = $connect ->query('select count(id_product) from product')->fetchColumn(); 
+    $sql__total_bill = $connect ->query('select count(id_bill) from bill')->fetchColumn(); 
+    $sql__total_feedback = $connect ->query('select count(id_feedback) from feedback')->fetchColumn(); 
+    $sql__total_customer = $connect ->query('select count(id_card) from customer_account')->fetchColumn();
+    $sql__total_provider = $connect ->query('select count(id_provider) from provider')->fetchColumn();
+    $sql__totalprice_bill = $connect ->query('select sum(totalprice) from bill')->fetchColumn();
 
-    $sql__totalproducts = $connect ->query('select count(id_product) from product')->fetchColumn(); 
-    $sql__totalbill = $connect ->query('select count(id_bill) from bill')->fetchColumn(); 
-    $sql__totalfeedback = $connect ->query('select count(id_feedback) from feedback')->fetchColumn(); 
-    $sql__totalcustomer = $connect ->query('select count(id_card) from customer_account')->fetchColumn(); 
 
 ?>
 
@@ -15,7 +17,7 @@
 
 <!-- Page Heading -->
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <h1 class="h3 mb-0 text-gray-800">Administrator</h1>
+    <h1 class="h3 mb-0 text-gray-800"> <code>Revenue statistics system</code> </h1>
     <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" style="cursor:default;">
     <i class="fas fa-star fa-sm text-white-50"></i> Website Shoes Shop Administrator</a>
 </div>
@@ -33,7 +35,7 @@
                             Total products</div>
                             <a href="<?php echo $level."product.php"?>" class="h2 mb-0 font-weight-bold text-gray-800" style="text-decoration:none;">
                                 <?php
-                                    echo $sql__totalproducts;
+                                    echo $sql__total_products;
                                 ?>
                             </a>
                     </div>
@@ -55,7 +57,7 @@
                         Total bill</div>
                         <a href="<?php echo $level."bill.php"?>" class="h2 mb-0 font-weight-bold text-gray-800" style="text-decoration:none;">
                             <?php
-                                echo $sql__totalbill;
+                                echo $sql__total_bill;
                             ?>
                         </a>
                     </div>
@@ -109,7 +111,7 @@
                             Feedback from customers</div>
                         <a href="<?php echo $level."feedback.php"?>" class="h2 mb-0 font-weight-bold text-gray-800" style="text-decoration:none;">
                             <?php 
-                                echo $sql__totalfeedback; 
+                                echo $sql__total_feedback; 
                             ?>
                         </a>
                     </div>
@@ -136,7 +138,7 @@
                             Number of user accounts</div>
                             <a href="<?php echo $level."customer__account.php"?>" class="h2 mb-0 font-weight-bold text-gray-800" style="text-decoration:none;">
                                 <?php
-                                    echo $sql__totalcustomer;
+                                    echo $sql__total_customer;
                                 ?>
                             </a>
                     </div>
@@ -155,12 +157,12 @@
                 <div class="row no-gutters align-items-center ml-2">
                     <div class="col mr-2">
                         <div class="text-xs font-weight-bold text-success text-uppercase mb-0" style="font-size:0.8rem;">
-                        Total bill</div>
-                        <div class="h2 mb-0 font-weight-bold text-gray-800">
+                        Total number of suppliers</div>
+                        <a href="<?php echo $level."provider.php"?>" class="h2 mb-0 font-weight-bold text-gray-800" style="text-decoration:none;">
                             <?php
-                                echo "x";
+                                echo $sql__total_provider;
                             ?>
-                        </div>
+                        </a>
                     </div>
                     <div class="col-auto">
                         <!-- <i class="fas fa-dollar-sign fa-2x text-gray-300"></i> -->
@@ -177,10 +179,10 @@
                 <div class="row no-gutters align-items-center ml-2">
                     <div class="col mr-2">
                         <div class="text-xs font-weight-bold text-success text-uppercase mb-0" style="font-size:0.8rem;">
-                        Total bill</div>
+                            The total amount of the bill</div>
                         <div class="h2 mb-0 font-weight-bold text-gray-800">
                             <?php
-                                echo "x";
+                                echo $sql__totalprice_bill;
                             ?>
                         </div>
                     </div>

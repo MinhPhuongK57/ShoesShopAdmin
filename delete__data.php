@@ -1,7 +1,6 @@
 <?php
     include $level."index__data.php";
 ?>
-
 <?php
     /*-------------------Delte product------------------*/
     if(isset($_GET["id_product"])){

@@ -115,4 +115,3 @@
         $list__feedback_select -> execute();
         $list__feedback_select_rowsdata = $list__feedback_select ->fetchAll();
     }
-

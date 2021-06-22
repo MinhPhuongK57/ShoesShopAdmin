@@ -4,7 +4,7 @@
         <?php
             $level = "";
             include $level."index__data.php";
-            include $level."search__data.php";
+            // include $level."search__data.php";
             //COUNT FEEDBACK
             
             $sql__totalfeedback = $connect ->query("select count(id_feedback) from feedback where status = '0'")->fetchColumn(); 
@@ -42,6 +42,7 @@
                     <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
                         <i class="fa fa-bars"></i>
                     </button>
+                    <h1 class="h3 mb-0 text-gray-800"> <code>Hello Administrator</code> </h1>
 
                     <!-- Topbar Search -->
                     <!-- <form action="product.php" method="post" class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" 
