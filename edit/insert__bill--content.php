@@ -7,17 +7,18 @@
         $date = $_POST['date'];
         $id_customer = $_POST['id_customer'];
         $totalprice = $_POST['totalprice'];
+        $address = $_POST['address'];
         $status = $_POST['status'];
         
         /*-------------------Insert product------------------*/
-        $sql__insert__bill = "INSERT INTO bill(bill_code,date, id_customer, totalprice, status) 
-        VALUES('$bill_code','$date','$id_customer','$totalprice',$status)";
+        $sql__insert__bill = "INSERT INTO bill(bill_code,date, id_customer, totalprice,address, status) 
+        VALUES('$bill_code','$date','$id_customer','$totalprice','$address',$status)";
         $product__insert__bill = $connect->prepare($sql__insert__bill);
         $product__insert__bill -> execute();
     }
 ?>
 <!-- Begin Page Content -->
-<div class="container-fluid">
+<div class="container-fluid pt-2">
 
 <!-- Page Heading -->
 <h1 class="h3 mb-2 text-gray-800"><code>INSERT BILL</code></h1>
@@ -35,45 +36,48 @@
             <!-- <div class="col-md-4 p-4">
                 <label for="username" class="form-label">Bill</label>
                 <input type="text" class="form-control" id="validationCustom01" name="id_bill" value="" placeholder="Enter bill" autocomplete="off" required>
-                <div class="valid-feedback">
-                    Looks good!
-                </div>
             </div> -->
             <div class="col-md-4 p-4">
                 <label for="username" class="form-label">Bill Code</label>
                 <input type="text" class="form-control" id="validationCustom01" name="bill_code" value="" placeholder="Enter bill code" autocomplete="off" required>
-                <div class="valid-feedback">
-                    Looks good!
-                </div>
             </div>
-
             <div class="col-md-4 p-4">
-                <label for="validationCustom05" class="form-label">Customer</label>
-                <input type="text" min = "0" max="150"class="form-control" id="validationCustom05" name="id_customer" value="" placeholder="Enter ID customer" autocomplete="off" required>
-                <div class="valid-feedback">
-                    Looks good!
-                </div>
+                <label for="customer" class="form-label">Customer</label>
+                <select class="form-control" id="validationCustom03" name="id_customer" value="" required>
+                        <option value="">Choose Customer</option>
+                    <?php foreach ($list__cus_account_rowsdata as $arr_cus) 
+                    {  
+                    ?>
+                        <option value="<?php echo $arr_cus["id_card"]?>"><?php echo $arr_cus["username"]?></option>
+                    <?php
+                    } 
+                    ?>
+                </select>
             </div>
             <div class="col-md-3 p-4">
                 <label for="validationCustom02" class="form-label" data-provide="datepicker" data-date-format="dd/mm/yyyy">Date</label>
                 <input type="date" class="form-control" id="validationCustom02" name="date" value="" placeholder="Enter date"  autocomplete="off" required>
-                <div class="valid-feedback">
-                    Looks good!
-                </div>
             </div>
             <div class="col-md-2 p-4">
                 <label for="validationCustom06" class="form-label">Total Price</label>
                 <input type="text" class="form-control" id="validationCustom06" name="totalprice" value="" placeholder="Enter total price" autocomplete="off" required>
-                <div class="valid-feedback">
-                    Looks good!
-                </div>
+            </div>
+            <div class="col-md-4 p-4">
+                <label for="address" class="form-label">Address</label>
+                <select class="form-control" id="validationCustom03" name="address" value="" required>
+                        <option value="">Choose Address</option>
+                    <?php foreach ($list__cus_account_rowsdata as $arr_cus) 
+                    {  
+                    ?>
+                        <option value="<?php echo $arr_cus["address"]?>"><?php echo $arr_cus["address"]?></option>
+                    <?php
+                    } 
+                    ?>
+                </select>
             </div>
             <div class="col-md-2 p-4">
                 <label for="validationCustom08" class="form-label">Status</label>
                 <input type="number" min="0" max="1" class="form-control" id="validationCustom08" name="status" value="" placeholder="Choose status" required>
-                <div class="valid-feedback">
-                    Looks good!
-                </div>
             </div>
             <div class="col-12 p-2 pl-4">
                 <button class="btn btn-primary" type="submit" id="fun" onclick=click();>Insert</button>

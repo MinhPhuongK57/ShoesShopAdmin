@@ -15,7 +15,6 @@
             $list__feedback-> execute();
             $list__feedback_show = $list__feedback->fetchAll();
         ?>
-
         <?php 
             //Show
             // if(isset($_GET["id_product"]))
@@ -36,13 +35,13 @@
             <div id="content">
 
                 <!-- Topbar -->
-                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+                <nav class="navbar navbar-expand navbar-light bg-white topbar static-top shadow">
 
                     <!-- Sidebar Toggle (Topbar) -->
                     <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
                         <i class="fa fa-bars"></i>
                     </button>
-                    <h1 class="h3 mb-0 text-gray-800"> <code>Hello Administrator</code> </h1>
+                    <h1 class="h3 mb-0 text-gray-800 ml-2"><code>ADMINISTRATOR</code></h1>
 
                     <!-- Topbar Search -->
                     <!-- <form action="product.php" method="post" class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" 
@@ -84,7 +83,7 @@
 
 
                     <!-- Topbar Navbar -->
-                    <ul class="navbar-nav ml-auto">
+                    <ul class="navbar-nav ml-auto mr-2">
 
                         <!-- Nav Item - Search Dropdown (Visible Only XS) -->
                         <li class="nav-item dropdown no-arrow d-sm-none">
@@ -169,7 +168,13 @@
                                 <!-- Counter - Messages -->
                                 <span class="badge badge-danger badge-counter">
                                     <?php
-                                        echo $sql__totalfeedback; 
+                                        if($sql__totalfeedback)
+                                        {
+                                            echo $sql__totalfeedback; 
+                                        }
+                                        else{
+                                            echo "";
+                                        }
                                     ?>
                                 </span>
                             </a>

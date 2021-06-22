@@ -13,25 +13,25 @@
 ?>
 
 <!-- Begin Page Content -->
-<div class="container-fluid">
+<div class="container-fluid pt-4">
 
 <!-- Page Heading -->
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <h1 class="h3 mb-0 text-gray-800"> <code>Revenue statistics system</code> </h1>
-    <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" style="cursor:default;">
+    <h1 class="h4 mb-0 ml-2 text-gray-800"><code>Statistical detail system</code></h1>
+    <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm mr-2" style="cursor:default;">
     <i class="fas fa-star fa-sm text-white-50"></i> Website Shoes Shop Administrator</a>
 </div>
 
-<!-- Content Row -->
+<!-- Content Row 1-->
 <div class="row">
 
-    <!-- Earnings (Monthly) Card Example -->
+    <!-- Total products -->
     <div class="col-xl-3 col-md-6 mb-4" style="padding:0 20px">
         <div class="card border-left-primary shadow h-100 py-2 pl-2">
             <div class="card-body">
                 <div class="row no-gutters align-items-center ml-2">
                     <div class="col mr-2">
-                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-0" style="font-size:0.8rem;">
+                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-2" style="font-size:0.8rem;">
                             Total products</div>
                             <a href="<?php echo $level."product.php"?>" class="h2 mb-0 font-weight-bold text-gray-800" style="text-decoration:none;">
                                 <?php
@@ -47,13 +47,13 @@
         </div>
     </div>
 
-    <!-- Earnings (Monthly) Card Example -->
+    <!--  Total bill -->
     <div class="col-xl-3 col-md-6 mb-4" style="padding:0 20px">
         <div class="card border-left-success shadow h-100 py-2 pl-2">
             <div class="card-body">
                 <div class="row no-gutters align-items-center ml-2">
                     <div class="col mr-2">
-                        <div class="text-xs font-weight-bold text-success text-uppercase mb-0" style="font-size:0.8rem;">
+                        <div class="text-xs font-weight-bold text-success text-uppercase mb-2" style="font-size:0.8rem;">
                         Total bill</div>
                         <a href="<?php echo $level."bill.php"?>" class="h2 mb-0 font-weight-bold text-gray-800" style="text-decoration:none;">
                             <?php
@@ -70,13 +70,13 @@
         </div>
     </div>
 
-    <!-- Earnings (Monthly) Card Example -->
+    <!-- Profit -->
     <div class="col-xl-3 col-md-6 mb-4"  style="padding:0 20px">
         <div class="card border-left-info shadow h-100 py-2 pl-2">
             <div class="card-body">
                 <div class="row no-gutters align-items-center ml-2">
                     <div class="col mr-2">
-                        <div class="text-xs font-weight-bold text-info text-uppercase mb-0" style="font-size:0.8rem;">
+                        <div class="text-xs font-weight-bold text-info text-uppercase mb-2" style="font-size:0.8rem;">
                         Profit
                         </div>
                         <div class="row no-gutters align-items-center">
@@ -101,14 +101,14 @@
         </div>
     </div>
 
-    <!-- Pending Requests Card Example -->
+    <!-- Feedback from customers -->
     <div class="col-xl-3 col-md-6 mb-4" style="padding:0 20px">
         <div class="card border-left-warning shadow h-100 py-2 pl-2">
             <div class="card-body">
                 <div class="row no-gutters align-items-center ml-2">
                     <div class="col mr-2">
-                        <div class="text-xs font-weight-bold text-warning text-uppercase mb-0" style="font-size:0.7rem;">
-                            Feedback from customers</div>
+                        <div class="text-xs font-weight-bold text-warning text-uppercase mb-2" style="font-size:0.7rem;">
+                        Feedback from customers</div>
                         <a href="<?php echo $level."feedback.php"?>" class="h2 mb-0 font-weight-bold text-gray-800" style="text-decoration:none;">
                             <?php 
                                 echo $sql__total_feedback; 
@@ -123,19 +123,19 @@
         </div>
     </div>
 </div>
-<!-- Content Row -->
+<!-- Content Row 1-->
 
-<!-- Content Row -->
+<!-- Content Row 2-->
 <div class="row">
 
-    <!-- Earnings (Monthly) Card Example -->
+    <!-- Number of user accounts -->
     <div class="col-xl-3 col-md-6 mb-4" style="padding:0 20px">
         <div class="card border-left-primary shadow h-100 py-2 pl-2">
             <div class="card-body">
                 <div class="row no-gutters align-items-center ml-2">
                     <div class="col mr-2">
-                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-0" style="font-size:0.7rem;">
-                            Number of user accounts</div>
+                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-2" style="font-size:0.8rem;">
+                            User accounts</div>
                             <a href="<?php echo $level."customer__account.php"?>" class="h2 mb-0 font-weight-bold text-gray-800" style="text-decoration:none;">
                                 <?php
                                     echo $sql__total_customer;
@@ -150,14 +150,14 @@
         </div>
     </div>
 
-    <!-- Earnings (Monthly) Card Example -->
+    <!--  Total number of suppliers -->
     <div class="col-xl-3 col-md-6 mb-4" style="padding:0 20px">
         <div class="card border-left-success shadow h-100 py-2 pl-2">
             <div class="card-body">
                 <div class="row no-gutters align-items-center ml-2">
                     <div class="col mr-2">
-                        <div class="text-xs font-weight-bold text-success text-uppercase mb-0" style="font-size:0.8rem;">
-                        Total number of suppliers</div>
+                        <div class="text-xs font-weight-bold text-success text-uppercase mb-2" style="font-size:0.8rem;">
+                        Provider</div>
                         <a href="<?php echo $level."provider.php"?>" class="h2 mb-0 font-weight-bold text-gray-800" style="text-decoration:none;">
                             <?php
                                 echo $sql__total_provider;
@@ -166,48 +166,50 @@
                     </div>
                     <div class="col-auto">
                         <!-- <i class="fas fa-dollar-sign fa-2x text-gray-300"></i> -->
-                        <i class="fas fa-calendar fa-2x text-gray-300"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Earnings (Monthly) Card Example -->
-    <div class="col-xl-3 col-md-6 mb-4" style="padding:0 20px">
-        <div class="card border-left-info shadow h-100 py-2 pl-2">
-            <div class="card-body">
-                <div class="row no-gutters align-items-center ml-2">
-                    <div class="col mr-2">
-                        <div class="text-xs font-weight-bold text-success text-uppercase mb-0" style="font-size:0.8rem;">
-                            The total amount of the bill</div>
-                        <div class="h2 mb-0 font-weight-bold text-gray-800">
-                            <?php
-                                echo $sql__totalprice_bill;
-                            ?>
-                        </div>
-                    </div>
-                    <div class="col-auto">
-                        <!-- <i class="fas fa-dollar-sign fa-2x text-gray-300"></i> -->
-                        <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                        <i class="fas fa-star fa-2x text-gray-300"></i>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Pending Requests Card Example -->
+    <!-- Total order amount -->
+    <div class="col-xl-3 col-md-6 mb-4" style="padding:0 20px">
+        <div class="card border-left-info shadow h-100 py-2 pl-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center ml-2">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-success text-uppercase mb-2" style="font-size:0.8rem;">
+                        Total order amount</div>
+                        <a href="<?php echo $level."bill.php"?>" class="h2 mb-0 font-weight-bold text-gray-800" style="text-decoration:none;">
+                            <?php
+                                echo $sql__totalprice_bill; 
+                            ?>
+                            <i class="fas fa-dollar-sign text-gray-600"></i>
+                        </a>
+                    </div>
+                    <div class="col-auto">
+                        <!-- <i class="fas fa-dollar-sign fa-2x text-gray-300"></i> -->
+                        <i class="fas fa-money-bill-wave fa-2x text-gray-300"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- XXXXX -->
     <div class="col-xl-3 col-md-6 mb-4" style="padding:0 20px">
         <div class="card border-left-warning shadow h-100 py-2 pl-2">
             <div class="card-body">
                 <div class="row no-gutters align-items-center ml-2">
                     <div class="col mr-2">
-                        <div class="text-xs font-weight-bold text-warning text-uppercase mb-0" style="font-size:0.7rem;">
+                        <div class="text-xs font-weight-bold text-warning text-uppercase mb-2" style="font-size:0.7rem;">
                             Feedback from customers</div>
-                        <div class="h2 mb-0 font-weight-bold text-gray-800">
+                        <a href="#" class="h2 mb-0 font-weight-bold text-gray-800" style="text-decoration:none;">
                             <?php 
-                                echo "x"; 
+                                echo "X"; 
                             ?>
-                        </div>
+                        </a>
                     </div>
                     <div class="col-auto">
                         <i class="fas fa-comments fa-2x text-gray-300"></i>
@@ -217,7 +219,7 @@
         </div>
     </div>
 </div>
-<!-- Content Row -->
+<!-- Content Row 2-->
 
 
 <div class="row">

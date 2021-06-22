@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.2
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1:3306
--- Thời gian đã tạo: Th6 21, 2021 lúc 03:42 AM
--- Phiên bản máy phục vụ: 10.4.10-MariaDB
--- Phiên bản PHP: 7.3.12
+-- Thời gian đã tạo: Th6 22, 2021 lúc 07:11 AM
+-- Phiên bản máy phục vụ: 5.7.31
+-- Phiên bản PHP: 7.3.21
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -56,17 +55,18 @@ CREATE TABLE IF NOT EXISTS `bill` (
   `date` date NOT NULL,
   `id_customer` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `totalprice` double NOT NULL,
+  `address` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
   `status` int(11) NOT NULL,
   PRIMARY KEY (`id_bill`)
-) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `bill`
 --
 
-INSERT INTO `bill` (`id_bill`, `bill_code`, `date`, `id_customer`, `totalprice`, `status`) VALUES
-(8, 7176, '2021-06-17', '1223341', 380, 1),
-(11, 1806, '2021-06-18', '1477744', 380, 1);
+INSERT INTO `bill` (`id_bill`, `bill_code`, `date`, `id_customer`, `totalprice`, `address`, `status`) VALUES
+(11, 1806, '2021-06-18', '1231654654', 380, 'Hà Tĩnh', 1),
+(13, 1415, '2021-06-22', '125145', 450, 'Bến Tre', 1);
 
 -- --------------------------------------------------------
 
@@ -148,7 +148,8 @@ CREATE TABLE IF NOT EXISTS `customer_account` (
 
 INSERT INTO `customer_account` (`username`, `phonenum`, `id_card`, `email`, `address`, `password`, `status`) VALUES
 ('Phan Trọng Đức', '0347134654', 1231654654, 'tmp@gmail.com', 'Hà Tĩnh', '123tai', 1),
-('Trần Minh Phường', '347281807', 123487548, 'tmp@gmail.com', 'Đồng Tháp', '012345165', 1);
+('Trần Minh Phường', '347281807', 123487548, 'tmp@gmail.com', 'Đồng Tháp', '012345165', 1),
+('Tống Thành Tài', '316215412', 125145, 'ttt@gmail.com', 'Bến Tre', 'ttt1234', 1);
 
 -- --------------------------------------------------------
 
@@ -209,7 +210,7 @@ CREATE TABLE IF NOT EXISTS `product` (
 --
 
 INSERT INTO `product` (`id_product`, `productname`, `id_producttype`, `id_provider`, `productimage`, `total`, `price`, `color`, `size`, `description`, `status`) VALUES
-(1, 'LeBron 18 Best 1–9', 'Kid', 'Nike', 'LeBron 18 Best 1–9.jpg', 72, 880, 'Red', 36, 'The Nike React Infinity Run Flyknit 2 continues to help keep you running.', 1),
+(1, 'LeBron 18 Best 1–9', 'Kid', 'Nike', '', 72, 880, 'Red', 36, 'The Nike React Infinity Run Flyknit 2 continues to help keep you running.', 1),
 (2, 'Nike ACG Mountain Fly Low', 'Kid', 'Nike', 'Nike ACG Mountain Fly Low.jpg', 48, 1350, 'Blue', 37, 'PThe Nike React Infinity Run Flyknit 2 continues to help keep you running.', 1),
 (4, 'Nike Air Max 90 LX', 'Men', 'Nike', 'Nike Air Max 90 LX.jpg', 50, 458, 'Grey', 39, 'The Nike React Infinity Run Flyknit 2 continues to help keep you running.', 1),
 (5, 'Nike Air Zoom Pegasus', 'Men', 'Nike', 'Nike Air Zoom Pegasus.jpg', 61, 360, 'Black', 40, 'Breathable mesh in the upper combines the comfort  you want with a wider fit at the toes.', 1),
@@ -223,10 +224,7 @@ INSERT INTO `product` (`id_product`, `productname`, `id_producttype`, `id_provid
 (13, 'Nike Romaleos 4', 'Men', 'Nike', 'Nike Romaleos 4.jpg', 23, 450, 'White', 44, 'Made from at least 20% recycled material by weight, the sock-like Nike Free Run 5.0 ', 1),
 (14, 'Nike SB BLZR Court DVDL', 'Men', 'Nike', 'Nike SB BLZR Court DVDL.jpg', 16, 560, 'Grey', 45, 'Continue the next evolution of speed with a racing shoe made to help you ', 1),
 (15, 'Nike SB BLZR Court', 'Men', 'Nike', 'Nike SB BLZR Court.jpg', 46, 249, 'Black', 39, 'Made from at least 20% recycled material by weight, the sock-like Nike Free Run 5.0 ', 1),
-(16, 'Nike SB Zoom Blazer Mid Edge', 'Men', 'Nike', 'Nike SB Zoom Blazer Mid Edge.jpg', 27, 223, 'Green', 40, 'Continue the next evolution of speed with a racing shoe made to help you ', 1),
-(17, 'Nike Waffle One', 'Woman', 'Nike', 'Nike Waffle One.jpg', 9, 229, 'Grey', 41, 'Breathable mesh in the upper combines the comfort  you want with a wider fit at the toes.', 1),
-(18, 'Nike ZoomX Invincible Run Flyknit', 'Woman', 'Nike', 'Nike ZoomX Invincible Run Flyknit.jpg', 121, 320, 'Black', 42, 'Continue the next evolution of speed with a racing shoe made to help you ', 1),
-(19, 'NikeCourt Vapor Lite', 'Woman', 'Nike', 'NikeCourt Vapor Lite.jpg', 16, 220, 'Green', 43, 'Made from at least 20% recycled material by weight, the sock-like Nike Free Run 5.0 ', 1);
+(16, 'Nike SB Zoom Blazer Mid Edge', 'Men', 'Nike', 'Nike SB Zoom Blazer Mid Edge.jpg', 27, 223, 'Green', 40, 'Continue the next evolution of speed with a racing shoe made to help you ', 1);
 
 -- --------------------------------------------------------
 
@@ -274,7 +272,8 @@ CREATE TABLE IF NOT EXISTS `provider` (
 
 INSERT INTO `provider` (`id_provider`, `providername`, `id_card`, `email`, `address`, `status`) VALUES
 ('Nike', 'Nike AirPort 48XlS', '1242124', 'nikeairpport@gmail.com', 'Earthosia American', 1),
-('Adidas', 'Adidas Shoes', '1629871', 'adidas@gmail.com', 'Herzogenaurach, Đức', 1);
+('Adidas', 'Adidas Shoes', '1629871', 'adidas@gmail.com', 'Herzogenaurach, Đức', 1),
+('Adidas 1314', 'Adidas Real Han Conon', '1314152614', 'adhc@gmail.com', 'Canamiroshima, Japan', 1);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

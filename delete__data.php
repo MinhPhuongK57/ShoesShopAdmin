@@ -8,7 +8,7 @@
         $sql__delete = "DELETE FROM product WHERE id_product = '$id_product'";
         $product__delete = $connect->prepare($sql__delete);
         $product__delete -> execute();
-        header("location:product.php");
+        header("location:product.php?ken=1");
     }
 ?>
 <?php
@@ -18,7 +18,7 @@
         $sql__delete = "DELETE FROM bill WHERE id_bill = '$id_bill'";
         $bill__delete = $connect->prepare($sql__delete);
         $bill__delete -> execute();
-        header("location: bill.php");
+        header("location:bill.php?ken=1");
     }
 ?>
 <?php
@@ -28,7 +28,7 @@
         $sql__delete = "DELETE FROM bill_detail WHERE id_billdetail = '$id_billdetail'";
         $bill_detail__delete = $connect->prepare($sql__delete);
         $bill_detail__delete -> execute();
-        header("location: billdetail.php");
+        header("location:billdetail.php?ken=1");
     }
 ?>
 <?php
@@ -38,7 +38,7 @@
         $sql__delete = "DELETE FROM customer_account WHERE id_card = '$id_card'";
         $customer_account__delete = $connect->prepare($sql__delete);
         $customer_account__delete -> execute();
-        header("location: customer__account.php");
+        header("location:customer__account.php?ken=1");
     }
 ?>
 <?php
@@ -48,7 +48,7 @@
         $sql__delete = "DELETE FROM provider WHERE id_provider = '$id_provider'";
         $provider__delete = $connect->prepare($sql__delete);
         $provider__delete -> execute();
-        header("location: provider.php");
+        header("location:provider.php?ken=1");
     }
 ?>
 <?php
@@ -58,7 +58,7 @@
             $sql__delete = "DELETE FROM producttype WHERE id_producttype = '$id_producttype'";
             $producttype__delete = $connect->prepare($sql__delete);
             $producttype__delete -> execute();
-            header("location: product__type.php");
+            header("location:product__type.php?ken=1");
         }
 ?>
 <?php
@@ -68,7 +68,7 @@
         $sql__delete = "DELETE FROM feedback WHERE id_feedback = '$id_feedback'";
         $feedback__delete = $connect->prepare($sql__delete);
         $feedback__delete -> execute();
-        header("location:feedback.php");
+        header("location:feedback.php?ken=1"); 
     }
 ?>
 

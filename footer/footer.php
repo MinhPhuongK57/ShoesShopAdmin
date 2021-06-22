@@ -36,7 +36,7 @@
                 </div>
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <button class="btn btn-danger" type="button" data-dismiss="modal">Cancel</button>
                     <a class="btn btn-primary" href="<?php echo $level."login.php"?>">Logout</a>
                 </div>
             </div>
@@ -70,38 +70,76 @@
     <script>
         $('#dataTable').DataTable(
             {
-                "lengthMenu": [ 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 60, 65, 70, 75, 80, 85, 90, 95, 100]
+                "lengthMenu": [ 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 60, 65, 70, 75, 80, 85, 90, 95, 100],
+                responsive: true,
+                language: {
+                    search :'Enter Search Data',
+                    searchPlaceholder: "Search.....",
+                }
             }
         );
     </script>
 
-
-
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src=<?php echo $level.js__path."jquery-3.6.0.min.js";?>></script>
     <!--Sweet Alert-->
+    <!--Xử lý popup-->
     <script src="<?php echo $level.js__path."sweetalert.min.js"?>"></script>
-    <!-- <script>
-        swal("Good job!", "You success to login!", "success");
-    </script> -->
-    <!-- <script>
-        function validation(){
-            var admin_name = $_SESSION['admin_name'];
-            var password = $_SESSION['password'];
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
 
-            var admin_Name = document.getElementById('admin_name').value;
-            var passWord = document.getElementById('password').value;
-            
-            if((admin_name == admin_Name) && (password == passWord))
-            {
-                swal("Good job!", "You success to login!", "success");
-                header("location:index.php");
-            }
-            else{
-                sweetalert("Oops...!", "Adminname and password was wrong!", "error");
-                header("location:login.php");
-            }
+        //Popup question delete product
+        $('.btn-del').on('click',function(e){
+            e.preventDefault();
+            const href = $(this).attr('href')
+            Swal.fire({
+                icon: 'warning',
+                title: 'Are you sure you want to delete this?',
+                text: 'Your product will be removed from stock..!',
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#4e73df',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Delete it',
+            }).then((result) => {
+                if(result.value){
+                    document.location.href = href;
+                }
+            })
+        });
+
+        //Alert delete successfully
+        const flashdata = $('.flash-data').data('flashdata')
+        if(flashdata){
+            Swal.fire({
+                icon: 'success',
+                type: 'success',
+                title: 'Deleted',
+                text: 'Successful delete..!'
+            })
         }
-    </script> -->
+
+        //Show popup top-right
+        // const Toast = Swal.mixin({
+        // toast: true,
+        // position: 'top-end',
+        // showConfirmButton: false,
+        // timer: 2000,
+        // timerProgressBar: true,
+        // didOpen: (toast) => {
+        //     toast.addEventListener('mouseenter', Swal.stopTimer)
+        //     toast.addEventListener('mouseleave', Swal.resumeTimer)
+        // }
+        // })
+
+        // Toast.fire({
+        // icon: 'success',
+        // title: 'Hello Administrator'
+        // })
+        
+
+    </script>
+
 </body>
 
 </html>

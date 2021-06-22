@@ -12,11 +12,11 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php?<?php echo $admin_name ?>">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center ml-3" href="index.php?<?php echo $admin_name ?>">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">ShoesShop<sup>ADMIN</sup></div>
+                <div class="sidebar-brand-text mx-3">shoesshop<sup>admin</sup></div>
             </a>
 
             <!-- Divider -->

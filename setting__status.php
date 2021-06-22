@@ -50,7 +50,7 @@
 
         $status_cus= ($sql__select__status_cus['status'] == '0')?'1':'0';
 
-        $sql_stt_select_cus= "UPDATE customer__account SET status = '$status_cus' WHERE id_card = '$id_card'";
+        $sql_stt_select_cus= "UPDATE customer_account SET status = '$status_cus' WHERE id_card = '$id_card'";
         $sql__exe__cus = $connect->prepare($sql_stt_select_cus);
         $sql__exe__cus -> execute();
         header("location:customer__account.php");

@@ -1,5 +1,5 @@
 <!-- Begin Page Content -->
-<div class="container-fluid">
+<div class="container-fluid pt-2">
 
 <!-- Page Heading -->
 <h1 class="h3 mb-2 text-gray-800"><code>PRODUCT TYPE</code></h1>
@@ -37,7 +37,12 @@
                             </td>
                             <td><a href="<?php echo $level."insert__producttype.php"?>" class="btn btn-primary">Add</a></td>
                             <td><a href="edit__producttype.php?id_producttype=<?php echo $level.$arr__protype["id_producttype"]?>" class="btn btn-success">Edit</a></td>
-                            <td><a href="delete__data.php?id_producttype=<?php echo $level.$arr__protype["id_producttype"]?>" class="btn btn-danger">Delete</a></td> 
+                            <td><a href="delete__data.php?id_producttype=<?php echo $level.$arr__protype["id_producttype"]?>" class="btn btn-danger btn-del">Delete</a></td> 
+                             <!--SweetAlert-->
+                             <?php if(isset($_GET['ken'])) :  ?> 
+                                <div class="flash-data" data-flashdata="<?= $_GET['ken'];?>"></div>
+                            <?php endif;?>
+                            <!--SweetAlert-->
                         </tr>
                     <?php } ?>
                 </tbody>

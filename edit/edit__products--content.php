@@ -31,7 +31,7 @@
 ?>
 
 <!-- Begin Page Content -->
-<div class="container-fluid">
+<div class="container-fluid pt-2">
 
 <!-- Page Heading -->
 <h1 class="h3 mb-2 text-gray-800"><code>UPDATE PRODUCTS</code></h1>
