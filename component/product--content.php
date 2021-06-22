@@ -49,6 +49,7 @@
                         <th>Price</th>
                         <th>Color</th>
                         <th style="width:40px;">Size</th>
+                        <th>Discount</th>
                         <th>Description</th>
                         <th>Status</th>
                         <th style="border-right:none"></th>
@@ -70,6 +71,7 @@
                             <td><?php echo $level.$arr__product["price"]?></td>
                             <td><?php echo $level.$arr__product["color"]?></td>
                             <td style="width:40px;"><?php echo $level.$arr__product["size"]?></td>
+                            <td><?php echo $level.$arr__product["discount"]?></td>
                             <td><?php echo $level.$arr__product["description"]?></td>
                             <!-- <td><?php echo ($level.$arr__product["status"])?"Active":"Inactive"?></td> -->
                             <td><?php if($arr__product['status'] == 1):?>

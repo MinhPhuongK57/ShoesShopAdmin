@@ -32,7 +32,7 @@
                             <td><?php echo $level.$arr__feed["id_feedback"]?></td>
                             <td><?php echo $level.$arr__feed["id_product"]?></td>
                             <td><?php echo $level.$arr__feed["email"]?></td>
-                            <td><?php echo date("d-m-Y",strtotime( $level.$arr__feed["date"]))?></td>
+                            <td><?php echo date("d/m/Y",strtotime( $level.$arr__feed["date"]))?></td>
                             <td style="width:350px;"><?php echo $level.$arr__feed["description"]?></td>
                             <td><?php if($arr__feed['status'] == '1'):?>
                                         <a href="setting__status.php?id_feedback=<?php echo $arr__feed['id_feedback']?>" class="btn btn-success"><i class="far fa-thumbs-up"></i></a>

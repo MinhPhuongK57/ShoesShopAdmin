@@ -12,6 +12,7 @@
         $price = $_POST['price'];
         $color = $_POST['color'];
         $size = $_POST['size'];
+        $discount = $_POST['discount'];
         $description = $_POST['description'];
         $status = $_POST['status'];
         //Image
@@ -19,8 +20,8 @@
         $image_tmp = $_FILES['image']['tmp_name'];
         
         /*-------------------Insert product------------------*/
-        $sql__insert = "INSERT INTO product(productname,id_producttype,id_provider,productimage,total,price,color,size,description,status)
-        VALUES('$productname','$id_producttype','$id_provider','$image',$total,$price,'$color',$size,'$description',$status)";
+        $sql__insert = "INSERT INTO product(productname,id_producttype,id_provider,productimage,total,price,color,size,discount,description,status)
+        VALUES('$productname','$id_producttype','$id_provider','$image',$total,$price,'$color',$size,'$discount','$description',$status)";
         move_uploaded_file($image_tmp,'img/'.$image);
         $product__insert = $connect->prepare($sql__insert);
         $product__insert -> execute();
@@ -106,23 +107,18 @@
             <div class="col-md-2 p-4">
                 <label for="validationCustom07" class="form-label">Size</label>
                 <input type="number" min="35" max="47" class="form-control" id="validationCustom08" name="size" placeholder="Choose Size" value="" required>
-                <div class="valid-feedback">
-                    Looks good!
-                </div>
             </div>
             <div class="col-md-2 p-4">
                 <label for="validationCustom08" class="form-label">Status</label>
                 <input type="number" min="0" max="1" class="form-control" id="validationCustom08" name="status" value="" placeholder="Status Selection" required>
-                <div class="valid-feedback">
-                    Looks good!
-                </div>
+            </div>
+            <div class="col-md-2 p-4">
+                <label for="validationCustom08" class="form-label">Discount</label>
+                <input type="text" class="form-control" id="validationCustom08" name="discount" value="" placeholder="Enter discount" required>
             </div>
             <div class="col-md-4 p-4">
                 <label for="validationCustom09" class="form-label">Description</label>
                 <input type="text" class="form-control" id="validationCustom06" name="description" value="" placeholder="Enter Discription" required>
-                <div class="valid-feedback">
-                    Looks good!
-                </div>
             </div>
             <div class="mb-3 p-4">
                 <label for="validationCustom10" class="form-label">Product Image</label>

@@ -33,7 +33,7 @@
                         <tr>
                             <td><?php echo $level.$arr__bill["id_bill"]?></td>
                             <td><?php echo $level.$arr__bill["bill_code"]?></td>
-                            <td><?php echo date("d-m-Y",strtotime( $level.$arr__bill["date"]))?></td>
+                            <td><?php echo date("d/m/Y",strtotime( $level.$arr__bill["date"]))?></td>
                             <td><?php echo $level.$arr__bill["id_customer"]?></td>
                             <td><?php echo $level.$arr__bill["totalprice"]?></td>
                             <td><?php echo $level.$arr__bill["address"]?></td>

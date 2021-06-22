@@ -13,6 +13,7 @@
         $color = $_POST['color'];
         $size = $_POST['size'];
         $description = $_POST['description'];
+        $discount = $_POST['discount'];
         $status = $_POST['status'];
         //Image
         $image = $_FILES['image']['name'];
@@ -22,7 +23,7 @@
         /*-------------------Update product------------------*/
         
         $sql__update = "UPDATE product SET productname = '$productname',id_producttype = '$id_producttype',id_provider= '$id_provider',
-        productimage = '$image',total = '$total', price = '$price' , color = '$color' , size = '$size' , description = N'$description',status = '$status'
+        productimage = '$image',total = '$total', price = '$price' , color = '$color' , size = '$size' ,discount = $discount, description = N'$description',status = '$status'
         WHERE id_product = '$id'";
         $list__update__product = $connect->prepare($sql__update);
         $list__update__product ->execute();
@@ -50,16 +51,10 @@
             <div class="col-md-4 p-4">
                 <label for="validationCustom01" class="form-label">Product ID</label>
                 <input type="text" class="form-control" id="validationCustom01" name="idproduct" value="<?php echo $id?>" placeholder="Enter Product ID" readonly>
-                <div class="valid-feedback">
-                    Looks good!
-                </div>
             </div>
             <div class="col-md-4 p-4">
                 <label for="validationCustom02" class="form-label">Product Name</label>
                 <input type="text" class="form-control" id="validationCustom02" name="productname" value="<?php echo $list__select['productname']?>" placeholder="Enter Product Name"  required>
-                <div class="valid-feedback">
-                    Looks good!
-                </div>
             </div>
             <div class="col-md-4 p-4">
                 <label for="validationCustom03" class="form-select">Product Type</label>
@@ -89,16 +84,10 @@
             <div class="col-lg-2 p-4">
                 <label for="validationCustom05" class="form-label">Total</label>
                 <input type="number" min = "0" max="150"class="form-control" id="validationCustom05" name="total" value="<?php echo $list__select['total']?>" placeholder="Choose Total" required>
-                <div class="valid-feedback">
-                    Looks good!
-                </div>
             </div>
             <div class="col-md-2 p-4">
                 <label for="validationCustom06" class="form-label">Price</label>
                 <input type="text" class="form-control" id="validationCustom06" name="price" value="<?php echo $list__select['price']?>" placeholder="Enter Price" required>
-                <div class="valid-feedback">
-                    Looks good!
-                </div>
             </div>
             <div class="col-md-4 p-4">
                 <label for="validationCustom07" class="form-label">Color</label>
@@ -115,23 +104,18 @@
             <div class="col-md-2 p-4">
                 <label for="validationCustom07" class="form-label">Size</label>
                 <input type="number" min="35" max="47" class="form-control" id="validationCustom08" name="size" placeholder="Choose Size" value="<?php echo $list__select['size']?>" required>
-                <div class="valid-feedback">
-                    Looks good!
-                </div>
             </div>
             <div class="col-md-2 p-4">
-                <label for="validationCustom08" class="form-label">Status</label>
-                <input type="number" min="0" max="1" class="form-control" id="validationCustom08" name="status" value="<?php echo $list__select['status']?>" placeholder="Status Selection" required>
-                <div class="valid-feedback">
-                    Looks good!
-                </div>
+                <label for="validationCustom08" class="form-label">Discount</label>
+                <input type="text" class="form-control" id="validationCustom08" name="discount" value="<?php echo $list__select['discount']?>" placeholder="Enter discount" required>
             </div>
             <div class="col-md-4 p-4">
                 <label for="validationCustom09" class="form-label">Description</label>
                 <input type="text" class="form-control" id="validationCustom06" name="description" value="<?php echo $list__select['description']?>" placeholder="Enter Discription" required>
-                <div class="valid-feedback">
-                    Looks good!
-                </div>
+            </div>
+            <div class="col-md-2 p-4">
+                <label for="validationCustom08" class="form-label">Status</label>
+                <input type="number" min="0" max="1" class="form-control" id="validationCustom08" name="status" value="<?php echo $list__select['status']?>" placeholder="Status Selection" required>
             </div>
             <div class="mb-3 p-4">
                 <label for="validationCustom10" class="form-label">Product Image</label>

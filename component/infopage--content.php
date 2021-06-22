@@ -1,5 +1,5 @@
  <!-- Begin Page Content -->
- <div class="container-fluid">
+ <div class="container-fluid pt-4">
 
     <!-- 404 Error Text -->
     <div class="text-center">
