@@ -6,5 +6,6 @@
     define ('js__path','js/');
     define ('img__path','img/');
     define ('tit__path','title/');
-    define ('edi__path','edit/');
+    define ('edi__path','edit information/');
+    define ('pag__path','pages/');
 ?>

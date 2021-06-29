@@ -11,7 +11,7 @@
     </div>
     <div class="card-body">
         <div class="table-responsive">
-            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+            <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
                         <th>Bill Detail</th>
@@ -40,9 +40,9 @@
                             <td><?php echo $level.$arr__billdetail["discount"]?></td>
                             <td><?php echo $level.$arr__billdetail["total"]?></td>
                             <td><?php if($arr__billdetail['status'] == 1):?>
-                                        <a href="setting__status.php?id_billdetail=<?php echo $arr__billdetail['id_billdetail']?>" class="btn btn-success"><i class="far fa-thumbs-up"></i></a>
+                                        <a href="setting__status.php?id_billdetail=<?php echo $arr__billdetail['id_billdetail']?>" class="btn btn-success">Active</a> <!--<i class="far fa-thumbs-up"-->
                                 <?php else: ?>
-                                        <a href="setting__status.php?id_billdetail=<?php echo $arr__billdetail['id_billdetail']?>" class="btn btn-danger"><i class="far fa-thumbs-down"></i></a>
+                                        <a href="setting__status.php?id_billdetail=<?php echo $arr__billdetail['id_billdetail']?>" class="btn btn-danger">Deactive</a> <!--<i class="far fa-thumbs-down"></i>-->
                                 <?php endif ?>
                             </td>
                             <td><a href="<?php echo $level."insert__billdetail.php" ?>" class="btn btn-primary">Add</a></td>

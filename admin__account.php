@@ -19,8 +19,8 @@
     $isBillDetail = false;
     $isProvider = false;
     $isFeedback = false;
-
-
+    
+    
     //Insert
     $isInsertProduct = false;
     $isInsertProductType = false;
@@ -28,8 +28,8 @@
     $isInsertProvider = false;
     $isInsertBill = false;
     $isInsertBillDetail = false;
-
-
+    
+    
     //Edit
     $isEditProduct = false;
     $isEditProductType = false;
@@ -38,8 +38,8 @@
     $isEditBill = false;
     $isEditBillDetail = false;
     $isEditFeedback = false;
-
-
+    
+    
     include $level."config.php";
     include $level."layout.php";
-?>
+    ?>

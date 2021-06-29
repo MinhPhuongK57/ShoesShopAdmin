@@ -1,6 +1,6 @@
 <?php
     //Head
-    include $level.com__path."head__account.php";
+    include $level.hea__path."head__account.php";
 
     //title
     if($isLogin == true)
@@ -19,7 +19,7 @@
     //Content
     if($isLogin == true)
     {
-        include $level.com__path."login--content.php";
+        include $level.com__path."main__content/login--content.php";
     }
     // if($isRegister == true)
     // {
@@ -27,7 +27,7 @@
     // }
     if($isForgotPassword == true)
     {
-        include $level.com__path."forgot-password--content.php";
+        include $level.com__path."main__content/forgot-password--content.php";
     }
     //Footer
     include $level.foo__path."content--end__account.php";

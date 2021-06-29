@@ -23,3 +23,9 @@
     <link href="<?php echo $level.css__path."sb-admin-2.css" ?>" rel="stylesheet">
 
 
+    <!--Link Datatables-->
+    <!-- <link rel="stylesheet" href="vendor/datatables/dataTables.bootstrap4.css">
+    <link rel="stylesheet" href="vendor/datatables/dataTables.bootstrap4.min.css"> -->
+    <!--Link Datatables-->
+
+

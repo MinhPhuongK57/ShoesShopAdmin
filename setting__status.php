@@ -2,18 +2,17 @@
     $level ="";
     include $level."DB/database.php";
 ?>
-
 <?php 
     //Xét status product
     if(isset($_GET["id_product"]))
     {
         $id_pro = $_GET["id_product"];
-        $sql = "SELECT status FROM product WHERE id_product = '$id_pro'";
+        $sql = "SELECT * FROM product WHERE id_product = '$id_pro'";
         $sql__status = $connect->prepare($sql);
         $sql__status -> execute();
         $sql__select__status_pr = $sql__status ->fetchAll();
         
-        $status_product = ($sql__select__status_pr['status'] = '0')?'1':'0';
+        $status_product = ($sql__select__status_pr[0][11] == '0')?'1':'0';
         
         $sql_stt_select_pr= "UPDATE product SET status = '$status_product' WHERE id_product = '$id_pro'";
         $sql__exe__pro = $connect->prepare($sql_stt_select_pr);
@@ -26,12 +25,12 @@
     if(isset($_GET["id_producttype"]))
     {
         $id_protype = $_GET["id_producttype"];
-        $sql = "SELECT status FROM producttype WHERE id_producttype = '$id_protype'";
+        $sql = "SELECT * FROM producttype WHERE id_producttype = '$id_protype'";
         $sql__status_type = $connect->prepare($sql);
         $sql__status_type -> execute();
         $sql__select__status_prt = $sql__status_type ->fetchAll();
 
-        $status_producttype = ($sql__select__status_prt['status'] == '0')?'1':'0';
+        $status_producttype = ($sql__select__status_prt[0][2] == '0')?'1':'0';
         $sql_stt_select_prt= "UPDATE producttype SET status = '$status_producttype' WHERE id_producttype = '$id_protype'";
         $sql__exe__prot = $connect->prepare($sql_stt_select_prt);
         $sql__exe__prot -> execute();
@@ -43,12 +42,12 @@
     if(isset($_GET["id_card"]))
     {
         $id_card = $_GET["id_card"];
-        $sql = "SELECT status FROM customer_account WHERE id_card = '$id_card'";
+        $sql = "SELECT * FROM customer_account WHERE id_card = '$id_card'";
         $sql__status_cus = $connect->prepare($sql);
         $sql__status_cus -> execute();
         $sql__select__status_cus = $sql__status_cus ->fetchAll();
 
-        $status_cus= ($sql__select__status_cus['status'] == '0')?'1':'0';
+        $status_cus= ($sql__select__status_cus[0][6] == '1')?'2':'1';
 
         $sql_stt_select_cus= "UPDATE customer_account SET status = '$status_cus' WHERE id_card = '$id_card'";
         $sql__exe__cus = $connect->prepare($sql_stt_select_cus);
@@ -61,12 +60,12 @@
     if(isset($_GET["id_provider"]))
     {
         $id_provider = $_GET["id_provider"];
-        $sql = "SELECT status FROM provider WHERE id_provider = '$id_provider'";
+        $sql = "SELECT * FROM provider WHERE id_provider = '$id_provider'";
         $sql__status_prov = $connect->prepare($sql);
         $sql__status_prov -> execute();
         $sql__select__status_prov = $sql__status_prov ->fetchAll();
 
-        $status_prov= ($sql__select__status_prov['status'] == '0')?'1':'0';
+        $status_prov= ($sql__select__status_prov[0][5] == '0')?'1':'0';
 
         $sql_stt_select_prov= "UPDATE provider SET status = '$status_prov' WHERE id_provider = '$id_provider'";
         $sql__exe__prov = $connect->prepare($sql_stt_select_prov);
@@ -79,13 +78,13 @@
     if(isset($_GET["id_bill"]))
     {
         $id_bill = $_GET["id_bill"];
-        $sql = "SELECT status FROM bill WHERE id_bill = '$id_bill'";
+        $sql = "SELECT * FROM bill WHERE id_bill = '$id_bill'";
         $sql__status_bill = $connect->prepare($sql);
         $sql__status_bill -> execute();
         $sql__select__status_bill = $sql__status_bill ->fetchAll();
 
-        $status_bill= ($sql__select__status_bill['status'] == '0')?'1':'0';
-
+        $status_bill = ($sql__select__status_bill[0][6] == '0')?'1':'0';
+        
         $sql_stt_select_bill= "UPDATE bill SET status = '$status_bill' WHERE id_bill = '$id_bill'";
         $sql__exe__bill = $connect->prepare($sql_stt_select_bill);
         $sql__exe__bill -> execute();
@@ -97,12 +96,12 @@
     if(isset($_GET["id_billdetail"]))
     {
         $id_billdetail = $_GET["id_billdetail"];
-        $sql = "SELECT status FROM bill_detail WHERE id_billdetail = '$id_billdetail'";
+        $sql = "SELECT * FROM bill_detail WHERE id_billdetail = '$id_billdetail'";
         $sql__status_bd = $connect->prepare($sql);
         $sql__status_bd -> execute();
         $sql__select__status_bd = $sql__status_bd ->fetchAll();
 
-        $status_bd= ($sql__select__status_bd['status'] == '0')?'1':'0';
+        $status_bd= ($sql__select__status_bd[0][7] == '0')?'1':'0';
 
         $sql_stt_select_bd= "UPDATE bill_detail SET status = '$status_bd' WHERE id_billdetail = '$id_billdetail'";
         $sql__exe__bd = $connect->prepare($sql_stt_select_bd);
@@ -115,12 +114,12 @@
     if(isset($_GET["id_feedback"]))
     {
         $id_feedback = $_GET["id_feedback"];
-        $sql = "SELECT status FROM feedback WHERE id_feedback = '$id_feedback'";
+        $sql = "SELECT * FROM feedback WHERE id_feedback = '$id_feedback'";
         $sql__status_fd = $connect->prepare($sql);
         $sql__status_fd -> execute();
         $sql__select__status_fd = $sql__status_fd ->fetchAll();
 
-        $status_fd= ($sql__select__status_fd['status'] == '1')?'0':'1';
+        $status_fd= ($sql__select__status_fd[0][5] == '0')?'1':'1';
 
         $sql_stt_select_fd= "UPDATE feedback SET status = '$status_fd' WHERE id_feedback = '$id_feedback'";
         $sql__exe__feedback = $connect->prepare($sql_stt_select_fd);

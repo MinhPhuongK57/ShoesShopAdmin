@@ -7,9 +7,22 @@
     $sql__total_feedback = $connect ->query('select count(id_feedback) from feedback')->fetchColumn(); 
     $sql__total_customer = $connect ->query('select count(id_card) from customer_account')->fetchColumn();
     $sql__total_provider = $connect ->query('select count(id_provider) from provider')->fetchColumn();
-    $sql__totalprice_bill = $connect ->query('select sum(totalprice) from bill')->fetchColumn();
+    $sql__totalprice_bill = $connect ->query('select sum(totalprice) from bill where status = 1')->fetchColumn();
+    $date = getdate();
+    $sql__totalprice_bymonth = $connect ->query("select sum(totalprice) from bill where status = 1 and month(date) = ".$date['mon']."")->fetchColumn();
+    $sql_month = $connect ->query("SELECT product.productname from bill_detail,bill,product where bill_detail.bill_code = bill.bill_code and bill_detail.id_product = product.id_product and month(date) = ".$date['mon']. " group by product.id_product order by sum(number) DESC LIMIT 1")->fetchColumn();
+    $sql_year = $connect ->query("SELECT product.productname from bill_detail,bill,product where bill_detail.bill_code = bill.bill_code and bill_detail.id_product = product.id_product and year(date) = ".$date['year']. " group by product.id_product order by sum(number) DESC LIMIT 1")->fetchColumn();
 
-
+    //A quarter
+    for($i =  0; $i <= 12;$i = $i + 3)
+    {
+        if( $date['mon'] <= $i ){
+            $date1 = $i;
+            $date2 = $date1 - 2;
+            // $sql__select_quarter = $connect ->query("SELECT product.productname from bill_detail,bill,product where bill_detail.bill_code = bill.bill_code and bill_detail.id_product = product.id_product and month(date) <= $date1 and month(date) > $date2 group by product.id_product order by sum(number) DESC LIMIT 1");
+            break;
+        } 
+    }
 ?>
 
 <!-- Begin Page Content -->
@@ -35,7 +48,12 @@
                             Total products</div>
                             <a href="<?php echo $level."product.php"?>" class="h2 mb-0 font-weight-bold text-gray-800" style="text-decoration:none;">
                                 <?php
-                                    echo $sql__total_products;
+                                    if($sql__total_products){
+                                        echo $sql__total_products;
+                                    }
+                                    else{
+                                        echo "0";
+                                    }
                                 ?>
                             </a>
                     </div>
@@ -57,7 +75,13 @@
                         Total bill</div>
                         <a href="<?php echo $level."bill.php"?>" class="h2 mb-0 font-weight-bold text-gray-800" style="text-decoration:none;">
                             <?php
-                                echo $sql__total_bill;
+                                if($sql__total_bill)
+                                {
+                                    echo $sql__total_bill;
+                                }
+                                else{
+                                    echo "0";
+                                }
                             ?>
                         </a>
                     </div>
@@ -111,7 +135,12 @@
                         Feedback from customers</div>
                         <a href="<?php echo $level."feedback.php"?>" class="h2 mb-0 font-weight-bold text-gray-800" style="text-decoration:none;">
                             <?php 
-                                echo $sql__total_feedback; 
+                                if($sql__total_feedback){
+                                    echo $sql__total_feedback; 
+                                }
+                                else{
+                                    echo "0";
+                                }
                             ?>
                         </a>
                     </div>
@@ -124,7 +153,7 @@
     </div>
 </div>
 <!-- Content Row 1-->
-
+<!----------------------------------------------->
 <!-- Content Row 2-->
 <div class="row">
 
@@ -138,8 +167,13 @@
                             User accounts</div>
                             <a href="<?php echo $level."customer__account.php"?>" class="h2 mb-0 font-weight-bold text-gray-800" style="text-decoration:none;">
                                 <?php
-                                    echo $sql__total_customer;
-                                ?>
+                                    if($sql__total_customer){
+                                        echo $sql__total_customer;
+                                    }
+                                    else{
+                                        echo "0";
+                                    }
+                                    ?>
                             </a>
                     </div>
                     <div class="col-auto">
@@ -160,7 +194,12 @@
                         Provider</div>
                         <a href="<?php echo $level."provider.php"?>" class="h2 mb-0 font-weight-bold text-gray-800" style="text-decoration:none;">
                             <?php
-                                echo $sql__total_provider;
+                                if($sql__total_provider){
+                                    echo $sql__total_provider;
+                                }
+                                else{
+                                    echo "0";
+                                }
                             ?>
                         </a>
                     </div>
@@ -173,19 +212,52 @@
         </div>
     </div>
 
-    <!-- Total order amount -->
+    <!-- Total bill by month -->
     <div class="col-xl-3 col-md-6 mb-4" style="padding:0 20px">
         <div class="card border-left-info shadow h-100 py-2 pl-2">
             <div class="card-body">
                 <div class="row no-gutters align-items-center ml-2">
                     <div class="col mr-2">
-                        <div class="text-xs font-weight-bold text-success text-uppercase mb-2" style="font-size:0.8rem;">
+                        <div class="text-xs font-weight-bold text-info text-uppercase mb-2" style="font-size:0.8rem;">
+                        Total bill by month</div>
+                        <a href="<?php echo $level."bill.php"?>" class="h2 mb-0 font-weight-bold text-gray-800" style="text-decoration:none;">
+                            <?php
+                                if($sql__totalprice_bymonth){
+                                    echo $sql__totalprice_bymonth; 
+                                }
+                                else{
+                                    echo "0";
+                                }
+                                ?>
+                            <i class="fas fa-dollar-sign text-gray-500"></i>
+                        </a>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-money-bill fa-2x text-gray-300"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <!-- Total order amount -->
+    <div class="col-xl-3 col-md-6 mb-4" style="padding:0 20px">
+        <div class="card border-left-warning shadow h-100 py-2 pl-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center ml-2">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-warning text-uppercase mb-2" style="font-size:0.8rem;">
                         Total order amount</div>
                         <a href="<?php echo $level."bill.php"?>" class="h2 mb-0 font-weight-bold text-gray-800" style="text-decoration:none;">
                             <?php
-                                echo $sql__totalprice_bill; 
-                            ?>
-                            <i class="fas fa-dollar-sign text-gray-600"></i>
+                                if($sql__totalprice_bill){
+                                    echo $sql__totalprice_bill; 
+                                }
+                                else{
+                                    echo "0";
+                                }
+                                ?>
+                            <i class="fas fa-dollar-sign text-gray-500"></i>
                         </a>
                     </div>
                     <div class="col-auto">
@@ -196,18 +268,94 @@
             </div>
         </div>
     </div>
+</div>
+<!-- Content Row 2-->
 
-    <!-- XXXXX -->
+<!----------------------------------------------->
+<!-- Content Row 3-->
+<div class="row">
+
+    <!-- Total products -->
+    <div class="col-xl-3 col-md-6 mb-4" style="padding:0 20px">
+        <div class="card border-left-primary shadow h-100 py-2 pl-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center ml-2">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-2" style="font-size:0.8rem;">
+                            Top Product (*Month)</div>
+                            <a href="#" class="h5 mb-0 font-weight-bold text-gray-800" style="text-decoration:none;">
+                                <?php
+                                    echo $sql_month;
+                                ?>
+                            </a>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-calendar-alt fa-2x text-gray-300"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--  Total bill -->
+    <div class="col-xl-3 col-md-6 mb-4" style="padding:0 20px">
+        <div class="card border-left-success shadow h-100 py-2 pl-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center ml-2">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-success text-uppercase mb-2" style="font-size:0.8rem;">
+                        Top Product (*A quarter)</div>
+                        <a href="#" class="h5 mb-0 font-weight-bold text-gray-800" style="text-decoration:none;">
+                            <?php
+                                $sql__select_quarter = $connect ->query("SELECT product.productname from bill_detail,bill,product where bill_detail.bill_code = bill.bill_code and bill_detail.id_product = product.id_product and month(date) <= $date1 and month(date) > $date2 group by product.id_product order by sum(number) DESC LIMIT 1")->fetchColumn();
+                                // var_dump($sql__select_quarter);
+                                echo $sql__select_quarter;
+                            ?>
+                        </a>
+                    </div>
+                    <div class="col-auto">
+                        <!-- <i class="fas fa-dollar-sign fa-2x text-gray-300"></i> -->
+                        <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--  Total bill -->
+    <div class="col-xl-3 col-md-6 mb-4" style="padding:0 20px">
+        <div class="card border-left-info shadow h-100 py-2 pl-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center ml-2">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-info text-uppercase mb-2" style="font-size:0.8rem;">
+                        Top Product (*Year)</div>
+                        <a href="#" class="h5 mb-0 font-weight-bold text-gray-800" style="text-decoration:none;">
+                            <?php
+                                echo $sql_year;
+                            ?>
+                        </a>
+                    </div>
+                    <div class="col-auto">
+                        <!-- <i class="fas fa-dollar-sign fa-2x text-gray-300"></i> -->
+                        <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Feedback from customers -->
     <div class="col-xl-3 col-md-6 mb-4" style="padding:0 20px">
         <div class="card border-left-warning shadow h-100 py-2 pl-2">
             <div class="card-body">
                 <div class="row no-gutters align-items-center ml-2">
                     <div class="col mr-2">
                         <div class="text-xs font-weight-bold text-warning text-uppercase mb-2" style="font-size:0.7rem;">
-                            Feedback from customers</div>
+                        Feedback from customers</div>
                         <a href="#" class="h2 mb-0 font-weight-bold text-gray-800" style="text-decoration:none;">
                             <?php 
-                                echo "X"; 
+                                echo "0"; 
                             ?>
                         </a>
                     </div>
@@ -219,7 +367,7 @@
         </div>
     </div>
 </div>
-<!-- Content Row 2-->
+<!-- Content Row 3-->
 
 
 <div class="row">

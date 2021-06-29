@@ -8,12 +8,13 @@
         $number = $_POST['number'];
         $price = $_POST['price'];
         $discount = $_POST['discount'];
-        $total = $_POST['total'];
+        // $total = $_POST['total'];
         $status = $_POST['status'];
-        
+
+        $total__end = ($number * $price) -  (($number * $price)  * $discount); 
         /*-------------------Insert product------------------*/
         $sql__insert__billdetail = "INSERT INTO bill_detail(bill_code,id_product,number,price,discount,total,status)
-        VALUES('$bill_code','$id_product',$number,$price,$discount,$total,$status)";
+        VALUES('$bill_code','$id_product',$number,$price,$discount,$total__end,$status)";
         $product__insert__billdetail = $connect->prepare($sql__insert__billdetail);
         $product__insert__billdetail -> execute();
     }
@@ -71,38 +72,23 @@
             <div class="col-md-3 p-4">
                 <label for="validationCustom05" class="form-label">Number</label>
                 <input type="number" min = "0" max="150"class="form-control" id="validationCustom05" name="number" value="" placeholder="Choose number" autocomplete="off" required>
-                <div class="valid-feedback">
-                    Looks good!
-                </div>
             </div>
 
             <div class="col-md-3 p-4">
                 <label for="validationCustom05" class="form-label">Price</label>
                 <input type="text" class="form-control" id="validationCustom05" name="price" value="" placeholder="Enter price" autocomplete="off" required>
-                <div class="valid-feedback">
-                    Looks good!
-                </div>
             </div>
             <div class="col-md-3 p-4">
                 <label for="validationCustom06" class="form-label">Discount</label>
                 <input type="text" class="form-control" id="validationCustom06" name="discount" value="" placeholder="Enter discount" autocomplete="off" required>
-                <div class="valid-feedback">
-                    Looks good!
-                </div>
             </div>
             <div class="col-md-3 p-4">
                 <label for="validationCustom06" class="form-label">Total</label>
-                <input type="text" class="form-control" id="validationCustom06" name="total" value="" placeholder="Enter total price" autocomplete="off" required>
-                <div class="valid-feedback">
-                    Looks good!
-                </div>
+                <input type="text" style="font-size:14px;" class="form-control" id="validationCustom06" name="total" value="" placeholder="You can see the total amount outside" autocomplete="off" required disabled>
             </div>
             <div class="col-md-3 p-4">
                 <label for="validationCustom08" class="form-label">Status</label>
                 <input type="number" min="0" max="1" class="form-control" id="validationCustom08" name="status" value="" placeholder="Choose status" required>
-                <div class="valid-feedback">
-                    Looks good!
-                </div>
             </div>
             <div class="col-12 p-2 pl-4">
                 <button class="btn btn-primary" type="submit" id="fun" onclick=click();>Insert</button>

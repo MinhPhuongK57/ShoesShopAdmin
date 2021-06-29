@@ -11,7 +11,7 @@
     </div>
     <div class="card-body">
         <div class="table-responsive">
-            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+            <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
                         <th>ID Provider</th>
@@ -36,9 +36,9 @@
                             <td><?php echo $level.$arr__provider["email"]?></td>
                             <td><?php echo $level.$arr__provider["address"]?></td>
                             <td><?php if($arr__provider['status'] == 1):?>
-                                        <a href="setting__status.php?id_provider=<?php echo $arr__provider['id_provider']?>" class="btn btn-success"><i class="far fa-thumbs-up"></i></a>
+                                        <a href="setting__status.php?id_provider=<?php echo $arr__provider['id_provider']?>" class="btn btn-success">Active</a> <!--<i class="far fa-thumbs-up"></i>-->
                                 <?php else: ?>
-                                        <a href="setting__status.php?id_provider=<?php echo $arr__provider['id_provider']?>" class="btn btn-danger"><i class="far fa-thumbs-down"></i></a>
+                                        <a href="setting__status.php?id_provider=<?php echo $arr__provider['id_provider']?>" class="btn btn-danger">Deactive</a> <!--<i class="far fa-thumbs-down"-->
                                 <?php endif ?>
                             </td>
                             <td><a href="<?php echo $level."insert__provider"?>" class="btn btn-primary">Add</a></td>

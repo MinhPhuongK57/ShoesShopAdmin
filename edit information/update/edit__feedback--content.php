@@ -5,6 +5,7 @@
     $id = $_GET["id_feedback"];
     if(isset($_POST['description']) )
     {
+        // $status = $_POST["status"];
         $description = $_POST['description'];
         
         /*-------------------Update Customer Account------------------*/
@@ -28,21 +29,21 @@
     <div class="card-body">
         <?php foreach($list__feedback_select_rowsdata as $row) {?>
         <form action="" method="post" class="row g-3 needs-validation" enctype="multipart/form-data" validate>
-            <div class="col-md-2 p-4">
+            <div class="col-md-3 p-4">
                 <label for="username" class="form-label">Feedback</label>
                 <input type="text" class="form-control" id="validationCustom01" name="id_feedback" value="<?php echo $id ?>" placeholder="" autocomplete="off" readonly>
             </div>
-            <div class="col-md-2 p-4">
+            <div class="col-md-3 p-4">
                 <label for="validationCustom02" class="form-label">Product</label>
                 <input type="text" class="form-control" id="validationCustom02" name="id_product" value="<?php echo $row['id_product']?>" placeholder="" autocomplete="off" readonly>
             </div>
-            <div class="col-md-2 p-4">
+            <div class="col-md-3 p-4">
                 <label for="validationCustom05" class="form-label">Date</label>
-                <input type="date" class="form-control" id="validationCustom05" name="date" value="<?php echo $row['date']?>" placeholder="" autocomplete="off" readonly>
+                <input type="datetime" class="form-control date" id="validationCustom05" name="date" value="<?php echo date("d/m/Y H:i:s",strtotime( $level.$row["date"]))?>" placeholder="" autocomplete="off" readonly>
             </div>
-            <div class="col-md-2 p-4">
+            <div class="col-md-3 p-4">
                 <label for="validationCustom05" class="form-label">Status</label>
-                <input type="number" class="form-control" id="validationCustom05" name="status" value="<?php echo $row['status']?>" placeholder="" autocomplete="off" readonly>
+                <input type="number" min="0" max="1" class="form-control" id="validationCustom05" name="status" value="<?php echo $row['status']?>" placeholder="" autocomplete="off" readonly>
             </div>
             <div class="col-md-4 p-4">
                 <label for="validationCustom02" class="form-label">Email</label>

@@ -71,13 +71,14 @@
         $('#dataTable').DataTable(
             {
                 "lengthMenu": [ 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 60, 65, 70, 75, 80, 85, 90, 95, 100],
-                responsive: true,
+                selectTable: true,
                 language: {
                     search :'Enter Search Data',
-                    searchPlaceholder: "Search.....",
-                }
+                    searchPlaceholder: "Search....."    
+                },
             }
         );
+        
     </script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

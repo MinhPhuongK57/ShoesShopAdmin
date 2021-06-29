@@ -8,12 +8,21 @@
             //COUNT FEEDBACK
             
             $sql__totalfeedback = $connect ->query("select count(id_feedback) from feedback where status = '0'")->fetchColumn(); 
+            $sql__totalcusaccount= $connect ->query("select count(id_card) from customer_account where status = '0'")->fetchColumn(); 
         ?>
         <?php 
-            $SQL= "SELECT * from feedback where status = '0'";
-            $list__feedback= $connect->prepare($SQL);
+            $format = 'Y-m-d H:i';
+            $sql__fee= "SELECT * from feedback where status = '0'";
+            $list__feedback= $connect->prepare($sql__fee);
             $list__feedback-> execute();
             $list__feedback_show = $list__feedback->fetchAll();
+
+
+            $sql__cus= "SELECT * from customer_account where status = '0'";
+            $list__cusacc= $connect->prepare($sql__cus);
+            $list__cusacc-> execute();
+            $list__cusacc_show = $list__cusacc->fetchAll();
+
         ?>
         <?php 
             //Show
@@ -115,48 +124,41 @@
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-bell fa-fw"></i>
                                 <!-- Counter - Alerts -->
-                                <span class="badge badge-danger badge-counter">3+</span>
+                                <span class="badge badge-danger badge-counter">
+                                <?php
+                                        if($sql__totalcusaccount)
+                                        {
+                                            echo $sql__totalcusaccount; 
+                                        }
+                                        else{
+                                            echo "";
+                                        }
+                                    ?>
+                                </span>
                             </a>
                             <!-- Dropdown - Alerts -->
                             <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="alertsDropdown">
                                 <h6 class="dropdown-header">
-                                    Alerts Center
+                                    Notification Center
                                 </h6>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="mr-3">
-                                        <div class="icon-circle bg-primary">
-                                            <i class="fas fa-file-alt text-white"></i>
+                                <div style="height:242px;overflow-y:auto">
+                                <?php foreach($list__cusacc_show as $row__cus) {?>
+                                    <a class="dropdown-item d-flex align-items-center" href="edit__cusaccount.php?id_card=<?php echo $row__cus['id_card']?>">
+                                        <div class="dropdown-list-image mr-2">
+                                            <img class="rounded-circle" src="<?php echo $level.img__path."undraw_profile_2.svg"?>"
+                                                alt="...">
+                                            <div class="status-indicator bg-success"></div>
                                         </div>
-                                    </div>
-                                    <div>
-                                        <div class="small text-gray-500">June 21, 2021</div>
-                                        <span class="font-weight-bold">A new monthly report is ready to download!</span>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="mr-3">
-                                        <div class="icon-circle bg-success">
-                                            <i class="fas fa-donate text-white"></i>
+                                        <div>
+                                            <div class="font-weight-bold text-gray-600"><?php echo $level.$row__cus['username']?></div>
+                                            <div class="small">Account register</div>
+                                            <span class="small text-gray-600">Email: <?php echo $level.$row__cus['email']?></span>
                                         </div>
-                                    </div>
-                                    <div>
-                                        <div class="small text-gray-500">June 21, 2021</div>
-                                        $290.29 has been deposited into your account!
-                                    </div>
-                                </a>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="mr-3">
-                                        <div class="icon-circle bg-warning">
-                                            <i class="fas fa-exclamation-triangle text-white"></i>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div class="small text-gray-500">June 21, 2021</div>
-                                        Spending Alert: We've noticed unusually high spending for your account.
-                                    </div>
-                                </a>
-                                <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
+                                    </a>
+                                <?php } ?>
+                                </div>
+                                <a class="dropdown-item text-center small text-gray-500" href="<?php echo $level."customer__account.php"?>">Show notification details</a>
                             </div>
                         </li>
 
@@ -187,18 +189,18 @@
                                 <div style="height:235px;overflow-y:auto">
                                 <?php foreach ($list__feedback_show as $select) {?>
                                     <a class="dropdown-item d-flex align-items-center" href="edit__feedback.php?id_feedback=<?php echo $select['id_feedback']?>">
-                                            <div class="dropdown-list-image mr-3">
-                                                <img class="rounded-circle" src="<?php echo $level.img__path."undraw_profile_2.svg"?>"
-                                                    alt="...">
-                                                <div class="status-indicator bg-success"></div>
+                                        <div class="dropdown-list-image mr-2">
+                                            <img class="rounded-circle" src="<?php echo $level.img__path."undraw_profile_2.svg"?>"
+                                                alt="...">
+                                            <div class="status-indicator bg-success"></div>
+                                        </div>
+                                        <div class="font-weight-bold">
+                                            <div class="text-truncate"><?php echo $level.$select['description']?></div>
+                                            <div class="small text-gray-500">
+                                                <?php echo $level.$select['email']?>
+                                                <em class="ml-4"><?php echo date("d/m/Y H:i:s",strtotime( $level.$select["date"]))?></em>
                                             </div>
-                                            <div class="font-weight-bold">
-                                                <div class="text-truncate"><?php echo $level.$select['description']?></div>
-                                                <div class="small text-gray-500">
-                                                    <?php echo $level.$select['email']?>
-                                                    <em class="ml-4"><?php echo $level.$select['date']?></em>
-                                                </div>
-                                            </div>
+                                        </div>
                                     </a>
                                 <?php }?>
                                 </div>
@@ -214,7 +216,7 @@
                                         <div class="small text-gray-500">Chicken the Dog · 2w</div>
                                     </div>
                                 </a> -->
-                                <a class="dropdown-item text-center small text-gray-500" href="<?php echo $level."feedback.php"?>">See detailed comments</a>
+                                <a class="dropdown-item text-center small text-gray-500" href="<?php echo $level."feedback.php"?>">Show comment details</a>
                             </div>
                         </li>
 

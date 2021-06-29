@@ -1,6 +1,6 @@
 <?php
     //Head
-    include $level.com__path."head.php";
+    include $level.hea__path."head.php";
 
     if($isIndex == true)
     {
@@ -99,105 +99,109 @@
     {
         include $level.tit__path.'title__edit__feedback.php';
     }
+
+    /*---Content main---*/
     //Sidebar
-    include $level.com__path.'sidebar.php';
+    include $level.com__path.'main__component/sidebar.php';
     //Wrapper
-    include $level.com__path.'wrapper__topbar.php';
+    include $level.com__path.'main__component/wrapper__topbar.php';
+    /*---Content main---*/
+
     if($isIndex == true)
     {
-        include $level.com__path.'index__main--content.php';
+        include $level.com__path.'main__content/index__main--content.php';
     }
     if($isInfopage == true)
     {
-        include $level.com__path.'infopage--content.php';
+        include $level.com__path.'main__content/infopage--content.php';
     }
     if($isProduct == true)
     {
-        include $level.com__path.'product--content.php';
+        include $level.com__path.'main__content/product--content.php';
     }
     if($isCustomerAccount == true)
     {
-        include $level.com__path.'customer__account--content.php';
+        include $level.com__path.'main__content/customer__account--content.php';
     }
     if($isProductType== true)
     {
-        include $level.com__path.'product__type--content.php';
+        include $level.com__path.'main__content/product__type--content.php';
     }
     if($isBill== true)
     {
-        include $level.com__path.'bill--content.php';
+        include $level.com__path.'main__content/bill--content.php';
     }
     if($isBillDetail== true)
     {
-        include $level.com__path.'billdetail--content.php';
+        include $level.com__path.'main__content/billdetail--content.php';
     }
     if($isProvider == true)
     {
-        include $level.com__path.'provider--content.php';
+        include $level.com__path.'main__content/provider--content.php';
     }
     if($isFeedback == true)
     {
-        include $level.com__path.'feedback--content.php';
+        include $level.com__path.'main__content/feedback--content.php';
     }
     if($isInformationAdmin == true)
     {
-        include $level.com__path.'information__admin--content.php';
+        include $level.com__path.'main__content/information__admin--content.php';
     }
     //Add Update Delete
     if($isInsertProduct == true)
     {
-        include $level.edi__path.'insert__products--content.php';
+        include $level.edi__path.'insert/insert__products--content.php';
     }
     if($isInsertProductType == true)
     {
-        include $level.edi__path.'insert__producttype--content.php';
+        include $level.edi__path.'insert/insert__producttype--content.php';
     }
     if($isInsertCustomerAccount == true)
     {
-        include $level.edi__path.'insert__customeraccount--content.php';
+        include $level.edi__path.'insert/insert__customeraccount--content.php';
     }
     if($isInsertProvider == true)
     {
-        include $level.edi__path.'insert__provider--content.php';
+        include $level.edi__path.'insert/insert__provider--content.php';
     }
     if($isInsertBill == true)
     {
-        include $level.edi__path.'insert__bill--content.php';
+        include $level.edi__path.'insert/insert__bill--content.php';
     }
     if($isInsertBillDetail == true)
     {
-        include $level.edi__path.'insert__billdetail--content.php';
+        include $level.edi__path.'insert/insert__billdetail--content.php';
     }
     if($isEditProduct == true)
     {
-        include $level.edi__path.'edit__products--content.php';
+        include $level.edi__path.'update/edit__products--content.php';
     }
     if($isEditProductType == true)
     {
-        include $level.edi__path.'edit__producttype--content.php';
+        include $level.edi__path.'update/edit__producttype--content.php';
     }
     if($isEditCustomerAccount == true)
     {
-        include $level.edi__path.'edit__cusaccount--content.php';
+        include $level.edi__path.'update/edit__cusaccount--content.php';
     }
     if($isEditProvider == true)
     {
-        include $level.edi__path.'edit__provider--content.php'; 
+        include $level.edi__path.'update/edit__provider--content.php'; 
     }
     if($isEditBill == true)
     {
-        include $level.edi__path.'edit__bill--content.php'; 
+        include $level.edi__path.'update/edit__bill--content.php'; 
     }
     if($isEditBillDetail == true)
     {
-        include $level.edi__path.'edit__billdetail--content.php'; 
+        include $level.edi__path.'update/edit__billdetail--content.php'; 
     }
     if($isAdminAccount == true){
-        include $level.edi__path.'edit__admin__account.php';
+        include $level.edi__path.'update/edit__admin__account.php';
     }
     if($isEditFeedback == true)
     {
-        include $level.edi__path.'edit__feedback--content.php';
+        include $level.edi__path.'update/edit__feedback--content.php';
     }
     //Footer
     include $level.foo__path.'footer.php';
