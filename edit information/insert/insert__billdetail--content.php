@@ -49,7 +49,7 @@
                     <?php foreach ($list__bill_rowsdata as $arr_bill) 
                     {  
                     ?>
-                        <option value="<?php echo $arr_bill["bill_code"]?>"><?php echo $arr_bill["id_bill"]?></option>
+                        <option value="<?php echo $arr_bill["bill_code"]?>"><?php echo $arr_bill["bill_code"]?></option>
                     <?php
                     } 
                     ?>
@@ -62,7 +62,7 @@
                     <?php foreach ($list__product_rowsdata as $arr_pro) 
                     {  
                     ?>
-                        <option value="<?php echo $arr_pro["id_product"]?>"><?php echo $arr_pro["id_product"]?></option>
+                        <option value="<?php echo $arr_pro["id_product"]?>"><?php echo $arr_pro["productname"]?></option>
                     <?php
                     } 
                     ?>

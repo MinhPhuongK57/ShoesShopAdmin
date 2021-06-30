@@ -21,20 +21,18 @@
                                     </div>
                                     <form action="" method="post" class="user g-3 needs-validation" enctype="multipart/form-data" validate>
                                         <div class="form-group">
-                                            <input type="email" class="form-control form-control-user"
-                                                id="exampleInputEmail" aria-describedby="emailHelp"
-                                                placeholder="Enter Email Address..." autocomplete="off" required>
+                                            <input type="email" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Email Address..." autocomplete="off" required>
                                         </div>
-                                        <button href="<?php echo $level."login.php"?>" class="btn btn-primary btn-user btn-block">
+                                        <button href="<?php echo $level . "login.php" ?>" class="btn btn-primary btn-user btn-block">
                                             Reset Password
                                         </button>
                                     </form>
                                     <hr>
                                     <!-- <div class="text-center">
-                                        <a class="small" href="<?php echo $level."register.php"?>">Create an Account!</a>
+                                        <a class="small" href="<?php echo $level . "register.php" ?>">Create an Account!</a>
                                     </div> -->
                                     <div class="text-center">
-                                        <a class="small" href="<?php echo $level."login.php"?>">Already have an account? Login!</a>
+                                        <a class="small" href="<?php echo $level . "login.php" ?>">Already have an account? Login!</a>
                                     </div>
                                 </div>
                             </div>

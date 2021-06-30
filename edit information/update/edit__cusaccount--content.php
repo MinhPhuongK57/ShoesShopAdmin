@@ -82,7 +82,7 @@
             </div>
             <div class="col-md-3 p-4">
                 <label for="validationCustom08" class="form-label">Status</label>
-                <input type="number" min="1" max="2" class="form-control" id="validationCustom08" name="status" value="<?php echo $row['status']?>" placeholder="Choose status" required>
+                <input type="number" min="0" max="1" class="form-control" id="validationCustom08" name="status" value="<?php echo $row['status']?>" placeholder="Choose status" required>
                 <div class="valid-feedback">
                     Looks good!
                 </div>

@@ -47,7 +47,7 @@
         $sql__status_cus -> execute();
         $sql__select__status_cus = $sql__status_cus ->fetchAll();
 
-        $status_cus= ($sql__select__status_cus[0][6] == '1')?'2':'1';
+        $status_cus= ($sql__select__status_cus[0][6] == '1')?'0':'1';
 
         $sql_stt_select_cus= "UPDATE customer_account SET status = '$status_cus' WHERE id_card = '$id_card'";
         $sql__exe__cus = $connect->prepare($sql_stt_select_cus);
